@@ -54,26 +54,26 @@ class Full extends Component {
         <div className="app-body">
           <Sidebar {...this.props}/>
           <main className="main">
-            <Breadcrumb />
+            {/*<Breadcrumb />*/}
             <Container fluid>
               <Switch>
                   <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
               </Switch>
-              <Widget
-                showCloseButton={true}
-                badge= {3}
-                handleNewUserMessage={this.handleNewUserMessage}
-              />
+              {/*<Widget*/}
+                {/*showCloseButton={true}*/}
+                {/*badge= {3}*/}
+                {/*handleNewUserMessage={this.handleNewUserMessage}*/}
+              {/*/>*/}
             </Container>
           </main>
-          <Aside />
+          {/*<Aside />*/}
         </div>
-        <Footer
-            applicationName="Consult"
-            organization="Meetrix"
-            copyrightYear="2018"
-            poweredByText="Meetrix"
-        />
+        {/*<Footer*/}
+            {/*applicationName="Consult"*/}
+            {/*organization="Meetrix"*/}
+            {/*copyrightYear="2018"*/}
+            {/*poweredByText="Meetrix"*/}
+        {/*/>*/}
       </div>
     );
   }
