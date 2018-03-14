@@ -1,0 +1,31 @@
+/*!
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.4
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ */
+
+// Override Boostrap variables
+@import "bootstrap-variables";
+
+// Import Bootstrap source files
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Override core variables
+@import "core-variables";
+
+// Import core styles
+@import "core/core";
+
+// Custom styles
+@import "custom";
+
+// image styles
+@import "component/component";
+
+@import "css/react-day-picker/style";
+@import "../node_modules/react-datetime/css/react-datetime.css";
+@import "../node_modules/input-moment/dist/input-moment.css";
+
+
