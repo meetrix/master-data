@@ -20,6 +20,7 @@ import RequestTimeSlot from '../../../components/Scheduler/RequestTimeSlot'
 import ContactConsult from '../../../components/Consultants/ContactConsult'
 import ConsultantLive from '../../../components/Consultants/ConsultantLive'
 import ConsulteeList from '../../../components/Consultee/ConsulteeList'
+import ListComponent from '../../../'
 import {API, Auth} from 'aws-amplify';
 class Test extends Component{
 

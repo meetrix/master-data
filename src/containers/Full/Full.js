@@ -15,6 +15,8 @@ import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS  }from '../../constants/constant
 import {actionCreatorFactory} from '../../actions/actionCreator';
 import { Widget } from 'react-chat-widget';
 
+
+import ListDashboard from '../../components/ListComponent/ListDashboard'
 const mapStateToProps=(state)=>{
     return {
         user: {
@@ -57,7 +59,11 @@ class Full extends Component {
             {/*<Breadcrumb />*/}
             <Container fluid>
               <Switch>
+                  <Route path="/dashboard/list" name="ListComponent" component={ListDashboard}/>
                   <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+
+
+
               </Switch>
               {/*<Widget*/}
                 {/*showCloseButton={true}*/}
