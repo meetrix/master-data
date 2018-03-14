@@ -10,9 +10,7 @@ class Dashboard extends Component {
 
       <div className="animated fadeIn">
         <Col>
-          <Row className="dash-board-component-wrapper">
 
-          </Row>
         </Col>
       </div>
 
