@@ -115,7 +115,7 @@ class UserRecordCardComponent extends Component{
                                     "btn-minimize": true
                                 })} data-toggle="collapse" data-target="#collapseExample"
                                    aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
-                                <a onClick={this.editUser.bind(this)} className="btn"><i class="fa fa-edit"></i></a>
+                                <a onClick={this.editUser.bind(this)} className="btn"><i className="fa fa-edit"></i></a>
                                 <a onClick={this.deleteUser.bind(this)} className="btn-close"><i
                                     className="icon-close"></i></a>
                             </div>
@@ -141,7 +141,7 @@ class UserRecordCardComponent extends Component{
                         <CardHeader>
                             Record Edit
                             <div className="card-actions">
-                                <a onClick={this.editUserDone.bind(this)} className="btn"><i class="fa fa-check-square-o"></i></a>
+                                <a onClick={this.editUserDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className="show collapse">

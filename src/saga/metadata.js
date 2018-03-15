@@ -5,6 +5,7 @@ import {ACTION_KEY as KEYS, REDUX_ACTIONS as ACTIONS, URLS, HTTP_METHODS, FETCH_
 
 
 let metadata = {};
+//users metadata
 metadata[KEYS.GET_ALL_USERS] = {
     url: URLS.GET_ALL_USERS,
     options: {
@@ -42,5 +43,42 @@ metadata[KEYS.UPDATE_USER] = {
 
 };
 
+//code grops metadata
+metadata[KEYS.GET_ALL_CODE_GROUPS] = {
+    url: URLS.GET_ALL_CODE_GROUPS,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_ALL_CODE_GROUPS_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_CODE_GROUPS_FAILURE,
+
+};
+metadata[KEYS.CREATE_CODE_GROUP] = {
+    url: URLS.CREATE_CODE_GROUP,
+    options: {
+        method: HTTP_METHODS.POST
+    },
+    successAction: ACTIONS.CREATE_CODE_GROUP_SUCCESS,
+    failureAction: ACTIONS.CREATE_CODE_GROUP_FAILURE,
+
+};
+metadata[KEYS.DELETE_CODE_GROUP] = {
+    url: URLS.DELETE_CODE_GROUP,
+    options: {
+        method: HTTP_METHODS.DELETE
+    },
+    successAction: ACTIONS.DELETE_CODE_GROUP_SUCCESS,
+    failureAction: ACTIONS.DELETE_CODE_GROUP_FAILURE,
+
+};
+metadata[KEYS.UPDATE_CODE_GROUP] = {
+    url: URLS.UPDATE_CODE_GROUP,
+    options: {
+        method: HTTP_METHODS.PUT
+    },
+    successAction: ACTIONS.UPDATE_CODE_GROUP_SUCCESS,
+    failureAction: ACTIONS.UPDATE_CODE_GROUP_FAILURE,
+
+};
 
 export default metadata;

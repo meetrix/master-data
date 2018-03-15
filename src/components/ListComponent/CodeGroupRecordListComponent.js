@@ -53,11 +53,10 @@ function mapStateToProps(state){
 }
 const mapDispatchToProps = (dispatch) => ({
     actions:{
-        //getConsultants:bindActionCreators(actionCreatorFactory(KEYS.CONSULTS, ATTRS.PAYLOAD),dispatch),
-        //getPets:bindActionCreators(actionCreateApiGateWayFactory(API_GATWAY_KEYS.GETPETS,API_GATEWAY_ATTRS.PAYLOAD),dispatch)
-        //getAllUsers:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_USERS,ATTRS.PAYLOAD),dispatch),
-        //createUsers:bindActionCreators(actionCreatorFactory(KEYS.CREATE_USER,ATTRS.PAYLOAD),dispatch),
-        //deleteUser:bindActionCreators(actionCreatorFactory(KEYS.DELETE_USER,ATTRS.PAYLOAD),dispatch)
+        getAllCodeGroups:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_CODE_GROUPS,ATTRS.PAYLOAD),dispatch),
+        createCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.CREATE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
+        deleteCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.DELETE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
+        updateCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.UPDATE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
     }
 })
 class CodeGroupRecordListComponent extends Component{
@@ -70,7 +69,7 @@ class CodeGroupRecordListComponent extends Component{
         this.inputs = {};
     }
     componentDidMount(){
-        //this.props.actions.getAllUsers();
+        this.props.actions.getAllCodeGroups();
     }
     toggleCollapseAddCard(e){
         e.preventDefault();
@@ -84,8 +83,8 @@ class CodeGroupRecordListComponent extends Component{
         this.inputs = this.inputs || {};
         this.inputs[e.target.name] = e.target.value
     }
-    addUser(){
-        this.props.actions.createUsers(this.inputs)
+    createCodeGroup(){
+        this.props.actions.createCodeGroup(this.inputs)
         this.inputs={}
     }
     render(){
@@ -97,7 +96,7 @@ class CodeGroupRecordListComponent extends Component{
                         <strong>{this.props.cardListTitle}</strong>
                     </CardHeader>
                     <CardBody>
-                        <CodeGroupRecordCardComponent group={this.props.cardList[0]} actions={this.props.actions}/>
+                        <CodeGroupRecordCardComponent codeGroup={this.props.cardList[0]} actions={this.props.actions}/>
                         {/*<UserRecordCardComponent {...this.props.cardList[1]}/>*/}
                         {/*<UserRecordCardComponent {...this.props.cardList[2]}/>*/}
                     </CardBody>
@@ -108,7 +107,7 @@ class CodeGroupRecordListComponent extends Component{
                                 <div className="card-actions">
                                     {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
-                                    <a  onClick={this.addUser.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
+                                    <a  onClick={this.createCodeGroup.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
