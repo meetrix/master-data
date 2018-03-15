@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {TabContent, TabPane, Nav, NavItem, NavLink, Progress, Label, Input, Badge} from 'reactstrap';
 import classnames from 'classnames';
-import Calendar from '../../components/Calendar/Calendar';
 import DayPicker from 'react-day-picker';
 
 class Aside extends Component {

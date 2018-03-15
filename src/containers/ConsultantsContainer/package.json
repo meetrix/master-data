@@ -1,6 +1,0 @@
-{
-  "name": "ConsultsCotainer",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./ConsultContainer.js"
-}

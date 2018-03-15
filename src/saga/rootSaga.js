@@ -7,7 +7,7 @@ import { all } from 'redux-saga/effects';
 
 // Sagas
 import {takeEveryFetchSaga, takeLatestFetchSaga} from './fetchSaga';
-import {takeEveryApiGateWaySaga} from './ApiGateWay/apiGateWaySaga'
+
 
 
 /**
@@ -17,6 +17,5 @@ export default function* rootSaga() {
     yield all([
         takeEveryFetchSaga(),
         takeLatestFetchSaga(),
-        takeEveryApiGateWaySaga()
     ]);
 }

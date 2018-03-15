@@ -5,9 +5,6 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga/rootSaga'
 import { createLogger } from 'redux-logger'
 
-import {localState,saveState} from  './localstorage'
-
-//const persistedData= localState();
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [sagaMiddleware,createLogger()]
 const composerEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ ||compose

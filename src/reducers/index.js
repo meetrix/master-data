@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux'
-import auth from './auth'
-import consultants from './consultants'
-import schedule from './scheduler'
-
+import spinner from './spinner'
 const rootReducer = combineReducers({
-    auth,
-    consultants,
-    schedule,
+    spinner,
 });
 export default rootReducer;

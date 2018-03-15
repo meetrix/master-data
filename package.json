@@ -65,6 +65,7 @@
     "react-popup": "^0.9.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-spinkit": "^3.0.0",
     "react-stars": "^2.2.5",
     "react-transition-group": "^2.2.1",
     "reactstrap": "^5.0.0-alpha.3",
