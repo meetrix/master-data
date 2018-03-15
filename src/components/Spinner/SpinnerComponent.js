@@ -2,16 +2,8 @@
  * Created by supun on 07/02/18.
  */
 import React,{Component} from 'react';
+import {Col} from 'reactstrap'
 import Spinner from 'react-spinkit'
-import {connect} from 'react-redux'
-
-function mapStateToProps(state){
-    return {
-        spinner:state.spinner,
-    }
-
-}
-
 class SpinnerComponent extends Component{
 
     constructor(props){
@@ -22,15 +14,12 @@ class SpinnerComponent extends Component{
     }
 
     render(){
-        if(this.state.spinner){
-            return(
-                <div>spinner</div>
+        return(
+            <Col><Spinner name="line-scale-party" color="aqua"/></Col>
 
-            );
-        }
-
-
+        );
     }
 
 
 }
+export default SpinnerComponent

@@ -9,13 +9,11 @@ import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
 import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
-import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS  }from '../../constants/constant';
 
-import {actionCreatorFactory} from '../../actions/actionCreator';
 import { Widget } from 'react-chat-widget';
 
 
-import ListDashboard from '../../components/ListComponent/ListDashboard'
+import CardListContainer from '../../containers/CardListContainer/CardListContainer'
 const mapStateToProps=(state)=>{
     return {
 
@@ -39,17 +37,20 @@ class Full extends Component {
   render() {
     return (
       <div className="app">
+
         <Header {...this.props}/>
         <div className="app-body">
+
           <Sidebar {...this.props}/>
           <main className="main">
             {/*<Breadcrumb />*/}
             <Container fluid>
               <Switch>
-                  <Route path="/dashboard/list" name="ListComponent" component={ListDashboard}/>
+                  <Route path="/dashboard/list" name="CardListContainer" component={CardListContainer}/>
 
               </Switch>
             </Container>
+
           </main>
           {/*<Aside />*/}
         </div>

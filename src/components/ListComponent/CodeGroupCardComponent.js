@@ -120,7 +120,12 @@ CodeGroupCardComponent.propTypes={
 
         }),
 
-    actions: PropTypes.object
+    actions: PropTypes.shape({
+        getAllCodeGroups: PropTypes.func.isRequired,
+        createCodeGroup:PropTypes.func.isRequired,
+        deleteCodeGroup:PropTypes.func.isRequired,
+        updateCodeGroup:PropTypes.func.isRequired,
+    })
 
 
 }

@@ -123,7 +123,12 @@ CodeCardComponen.propTypes={
             description: PropTypes.string
         }),
 
-    actions: PropTypes.object
+    actions: PropTypes.shape({
+        getAllCodes: PropTypes.func.isRequired,
+        createCode:PropTypes.func.isRequired,
+        deleteCode:PropTypes.func.isRequired,
+        updateCode:PropTypes.func.isRequired,
+    })
 
 
 }

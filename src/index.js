@@ -14,7 +14,7 @@ import '../scss/style.scss'
 // Temp fix for reactstrap
 import '../scss/core/_dropdown-menu-right.scss'
 //import router
-import Routes from  './routes'
+import App from  './App'
 
 
 //Configure Store
@@ -27,6 +27,6 @@ const initialState = {
 const store = configure(initialState);
 ReactDOM.render((
     <Provider store={store}>
-        <Routes/>
+        <App/>
     </Provider>
 ), document.getElementById('root'));

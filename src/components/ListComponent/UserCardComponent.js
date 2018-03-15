@@ -187,7 +187,12 @@ UserCardComponent.propTypes={
             password: PropTypes.string
         }),
 
-    actions: PropTypes.object
+    actions: PropTypes.shape({
+        getAllUsers: PropTypes.func.isRequired,
+        createUsers:PropTypes.func.isRequired,
+        deleteUser:PropTypes.func.isRequired,
+        updateUser:PropTypes.func.isRequired,
+    })
 
 
 }
