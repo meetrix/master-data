@@ -9,86 +9,9 @@ import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS} from '../../constants/constant'
 import CardListView from './CardListView'
 function mapStateToProps(state){
     return {
-        userCardList:{
-            title:"User–Record",
-            users: [
-                {
-                    userId: "SCHMIDT",
-                    lastName: "Schmidt",
-                    firstName:"Dieter",
-                    task: "Inspector",
-                    department: "QM01",
-                    role: "USER",
-                    password: "1234567890"
-                },
-                {
-                    userId: "SCHMIDT",
-                    lastName: "Schmidt",
-                    firstName:"Dieter",
-                    task: "Inspector",
-                    department: "QM01",
-                    role: "USER",
-                    password: "1234567890"
-                },
-                {
-                    userId: "SCHMIDT",
-                    lastName: "Schmidt",
-                    firstName:"Dieter",
-                    task: "Inspector",
-                    department: "QM01",
-                    role: "USER",
-                    password: "1234567890"
-                }]
-        },
-        codeCardList:{
-            title:"Code-Record",
-            codes: [
-                {
-                    code: "A1",
-                    codeType: "U",
-                    description: "Fehlende Dokumentation/Aufzeichnungen",
-                    codeGroup: "NC-CC-A"
-                },
-                {
-                    code: "A2",
-                    codeType: "U",
-                    description: "Falsche/fehlerh. Dokument/Aufzeichnung",
-                    codeGroup: "NC-CC-A"
-                },
-                {
-                    code: "AA",
-                    codeType: "P",
-                    description: "Strukturelle und mechanische Montage",
-                    codeGroup: "NC-DC-A"
-                }
-            ]
-        },
-        codeGroupCardList:{
-            title:"Code-Group-Record",
-            codeGroups: [
-                {
-                    codeGroup: "NC-DC-A",
-                    description: "Struktureller und mechanischer Einbau",
-                    codeType: "P"
-                },
-                {
-                    codeGroup: "NC-DC-B",
-                    description: "Elektrik-Einbau",
-                    codeType: "P"
-                },
-                {
-                    codeGroup: "NC-DC-C",
-                    description: "Oberfläche und Behandlung",
-                    "codeType": "P"
-                },
-                {
-                    codeGroup: "NC-DC-D",
-                    description: "Beschädigung",
-                    codeType: "P"
-                }
-
-            ]
-        },
+        userCardList:userCardList,
+        codeCardList:state.codeCardList,
+        codeGroupCardList:state.codeGroupCardList,
 
 
 
