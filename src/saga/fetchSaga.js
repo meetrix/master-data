@@ -33,15 +33,20 @@ function fetchHandler({key, payload}) {
         url = url.replace(`/:${paramKey}`, `/${payloadClone[paramKey]}`);
 
         // Assume that same data will not be sent as both path param and query/body
-        delete payloadClone[paramKey];
+        //delete payloadClone[paramKey];
     });
-
+    console.log("url")
+    console.log(url)
     if (optionsClone.method === HTTP_METHODS.GET) {
         optionsClone.params = {...payloadClone, ...optionsClone.params};
-    } else {
+    }
+    else if (optionsClone.method === HTTP_METHODS.DELETE) {
+        optionsClone.params = {...payloadClone, ...optionsClone.params};
+    }
+    else {
         optionsClone.body = {...payloadClone, ...optionsClone.body};
     }
-
+    console.log(optionsClone)
     return new Promise((resolve, reject) => {
         fetch(url, optionsClone)
             .then((res) => resolve({

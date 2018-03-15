@@ -14,6 +14,9 @@ import {
 } from 'reactstrap';
 
 import ListComponent from './ListComponent'
+import UserRecordListComponent from './UserRecordListComponent'
+import CodeGroupRecordListComponent from './CodeGroupRecordListComponent'
+import CodeRecordListComponent from './CodeRecordListComponent'
 
 class ListDashboard extends Component{
 
@@ -21,9 +24,9 @@ class ListDashboard extends Component{
         return(
 
             <Row>
-                <ListComponent/>
-                <ListComponent/>
-                <ListComponent/>
+                <UserRecordListComponent/>
+                <CodeGroupRecordListComponent/>
+                <CodeRecordListComponent/>
 
             </Row>
 

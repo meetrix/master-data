@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
     actions:{
         //getConsultants:bindActionCreators(actionCreatorFactory(KEYS.CONSULTS, ATTRS.PAYLOAD),dispatch),
         //getPets:bindActionCreators(actionCreateApiGateWayFactory(API_GATWAY_KEYS.GETPETS,API_GATEWAY_ATTRS.PAYLOAD),dispatch)
-
+        //addCard:bindActionCreators()
     }
 })
 class ListComponent extends Component{
