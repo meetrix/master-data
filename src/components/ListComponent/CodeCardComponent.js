@@ -18,35 +18,34 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 
-class CodeGroupRecordCardComponent extends Component{
+class CodeCardComponen extends Component{
 
     constructor(props){
         super(props)
         this.state={
-            codeGroup:this.props.codeGroup,
+            code:this.props.code,
             collapseAddCard:false,
             editCard:false,
         }
     }
     toggleCollapseAddCard(e){
         e.preventDefault();
-        //document.body.classhList.toggle('sidebar-hidden');
         this.setState((prevState, props) => ({
             collapseAddCard: ! prevState.collapseAddCard
         }));
     }
-    deleteCodeGroup(){
+    deleteCode(){
 
-        this.props.actions.deleteCodeGroup({codeGroup:this.props.codeGroup.codeGroup})
+        this.props.actions.deleteCode({codeGroup:this.props.code.codeGroup})
     }
 
-    editCodeGroup(){
+    editCode(){
         this.setState({editCard:true})
     }
 
-    editCodeGroupDone(){
+    editCodeDone(){
 
-        this.props.actions.updateCodeGroup({codeGroup:this.props.codeGroup.codeGroup})
+        this.props.actions.updateCode({codeGroup:this.props.code.codeGroup})
 
     }
 
@@ -56,8 +55,8 @@ class CodeGroupRecordCardComponent extends Component{
         const name = target.name;
 
         this.setState(prevState => ({
-            codeGroup: {
-                ...prevState.codeGroup,
+            code: {
+                ...prevState.code,
                 [name]: value
             }
         }))
@@ -73,15 +72,15 @@ class CodeGroupRecordCardComponent extends Component{
                             <div className="card-actions">
                                 {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                 <a onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })} data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
-                                <a onClick={this.editCodeGroup.bind(this)} className="btn"><i className="fa fa-edit"></i></a>
-                                <a onClick={this.deleteCodeGroup.bind(this)} className="btn-close"><i className="icon-close"></i></a>
+                                <a onClick={this.editCode.bind(this)} className="btn"><i className="fa fa-edit"></i></a>
+                                <a onClick={this.deleteCode.bind(this)} className="btn-close"><i className="icon-close"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
-                            <Alert color="success">CodeGroup : {this.props.codeGroup.codeGroup}</Alert>
-                            <Alert color="success">CodeType : {this.props.codeGroup.codeType}</Alert>
-                            <Alert color="success">Description : {this.props.codeGroup.description}</Alert>
-
+                            <Alert color="success">CodeId : {this.props.code.code}</Alert>
+                            <Alert color="success">CodeType  : {this.props.code.codeType}</Alert>
+                            <Alert color="success">CodeGroup : {this.props.code.codeGroup}</Alert>
+                            <Alert color="success">Description : {this.props.code.description}</Alert>
 
                         </CardBody>
                     </Card>
@@ -95,15 +94,18 @@ class CodeGroupRecordCardComponent extends Component{
                         <CardHeader>
                             Record Edit
                             <div className="card-actions">
-                                <a onClick={this.editCodeGroupDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
+                                <a onClick={this.editCodeDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className="show collapse">
                             <InputGroup>
-                                <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
+                                <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="Description" name="description"  value={this.state.codeGroup.description} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} />
+                            </InputGroup>
+                            <InputGroup>
+                                <Input placeholder="Description" value={this.state.code.description} name="description" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                         </CardBody>
                     </Card>
@@ -113,18 +115,18 @@ class CodeGroupRecordCardComponent extends Component{
 
     }
 }
-CodeGroupRecordCardComponent.propTypes={
-    codeGroup:PropTypes.shape({
-            codeGroup: PropTypes.string,
-            description: PropTypes.string,
+CodeCardComponen.propTypes={
+    code:PropTypes.shape({
+            code: PropTypes.string,
             codeType: PropTypes.string,
-
+            codeGroup: PropTypes.string,
+            description: PropTypes.string
         }),
 
     actions: PropTypes.object
 
 
 }
-export default CodeGroupRecordCardComponent/**
+export default CodeCardComponen/**
  * Created by supun on 14/03/18.
  */

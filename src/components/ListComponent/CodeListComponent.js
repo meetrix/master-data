@@ -19,7 +19,7 @@ import {
     InputGroup,Input
 } from 'reactstrap';
 
-import CodeRecordCardComponent from './CodeRecordCardComponent'
+import CodeCardComponent from './CodeCardComponent'
 
 function mapStateToProps(state){
     return {
@@ -50,14 +50,14 @@ function mapStateToProps(state){
 }
 const mapDispatchToProps = (dispatch) => ({
     actions:{
-        //getConsultants:bindActionCreators(actionCreatorFactory(KEYS.CONSULTS, ATTRS.PAYLOAD),dispatch),
-        //getPets:bindActionCreators(actionCreateApiGateWayFactory(API_GATWAY_KEYS.GETPETS,API_GATEWAY_ATTRS.PAYLOAD),dispatch)
-        // getAllUsers:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_USERS,ATTRS.PAYLOAD),dispatch),
-        // createUsers:bindActionCreators(actionCreatorFactory(KEYS.CREATE_USER,ATTRS.PAYLOAD),dispatch),
-        // deleteUser:bindActionCreators(actionCreatorFactory(KEYS.DELETE_USER,ATTRS.PAYLOAD),dispatch)
+        getAllCodes:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_CODES,ATTRS.PAYLOAD),dispatch),
+        createCode:bindActionCreators(actionCreatorFactory(KEYS.CREATE_CODE,ATTRS.PAYLOAD),dispatch),
+        deleteCode:bindActionCreators(actionCreatorFactory(KEYS.DELETE_CODE,ATTRS.PAYLOAD),dispatch),
+        updateCode:bindActionCreators(actionCreatorFactory(KEYS.UPDATE_CODE,ATTRS.PAYLOAD),dispatch),
+
     }
 })
-class CodeRecordListComponent extends Component{
+class CodeListComponent extends Component{
 
     constructor(props){
         super(props)
@@ -67,12 +67,10 @@ class CodeRecordListComponent extends Component{
         this.inputs = {};
     }
     componentDidMount(){
-        //this.props.actions.getAllUsers();
+        this.props.actions.getAllCodes();
     }
     toggleCollapseAddCard(e){
         e.preventDefault();
-        console.log("click"+!this.state.collapseAddCard)
-        //document.body.classhList.toggle('sidebar-hidden');
         this.setState((prevState, props) => ({
             collapseAddCard: ! prevState.collapseAddCard
         }));
@@ -81,8 +79,8 @@ class CodeRecordListComponent extends Component{
         this.inputs = this.inputs || {};
         this.inputs[e.target.name] = e.target.value
     }
-    addUser(){
-        this.props.actions.createUsers(this.inputs)
+    createCode(){
+        this.props.actions.createCode(this.inputs)
         this.inputs={}
     }
     render(){
@@ -94,7 +92,7 @@ class CodeRecordListComponent extends Component{
                         <strong>{this.props.cardListTitle}</strong>
                     </CardHeader>
                     <CardBody>
-                        <CodeRecordCardComponent code={this.props.cardList[0]} actions={this.props.actions}/>
+                        <CodeCardComponent code={this.props.cardList[0]} actions={this.props.actions}/>
                         {/*<UserRecordCardComponent {...this.props.cardList[1]}/>*/}
                         {/*<UserRecordCardComponent {...this.props.cardList[2]}/>*/}
                     </CardBody>
@@ -105,7 +103,7 @@ class CodeRecordListComponent extends Component{
                                 <div className="card-actions">
                                     {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
-                                    <a  onClick={this.addUser.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
+                                    <a  onClick={this.createCode.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
@@ -132,6 +130,6 @@ class CodeRecordListComponent extends Component{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CodeRecordListComponent)/**
+export default connect(mapStateToProps,mapDispatchToProps)(CodeListComponent)/**
  * Created by supun on 14/03/18.
  */

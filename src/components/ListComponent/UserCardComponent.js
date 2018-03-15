@@ -18,7 +18,7 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 
-class UserRecordCardComponent extends Component{
+class UserCardComponent extends Component{
 
     constructor(props){
         super(props)
@@ -176,7 +176,7 @@ class UserRecordCardComponent extends Component{
         }
 
 }
-UserRecordCardComponent.propTypes={
+UserCardComponent.propTypes={
     user:PropTypes.shape({
             userId: PropTypes.string,
             lastName: PropTypes.string,
@@ -191,6 +191,6 @@ UserRecordCardComponent.propTypes={
 
 
 }
-export default UserRecordCardComponent/**
+export default UserCardComponent/**
  * Created by supun on 14/03/18.
  */

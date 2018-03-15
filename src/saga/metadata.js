@@ -81,4 +81,42 @@ metadata[KEYS.UPDATE_CODE_GROUP] = {
 
 };
 
+//code record metadata
+metadata[KEYS.GET_ALL_CODES] = {
+    url: URLS.GET_ALL_CODES,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_ALL_CODES_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_CODES_FAILURE,
+
+};
+metadata[KEYS.CREATE_CODE] = {
+    url: URLS.CREATE_CODE,
+    options: {
+        method: HTTP_METHODS.POST
+    },
+    successAction: ACTIONS.CREATE_CODE_SUCCESS,
+    failureAction: ACTIONS.CREATE_CODE_FAILURE,
+
+};
+metadata[KEYS.DELETE_CODE] = {
+    url: URLS.DELETE_CODE,
+    options: {
+        method: HTTP_METHODS.DELETE
+    },
+    successAction: ACTIONS.DELETE_CODE_SUCCESS,
+    failureAction: ACTIONS.DELETE_CODE_FAILURE,
+
+};
+metadata[KEYS.UPDATE_CODE] = {
+    url: URLS.UPDATE_CODE,
+    options: {
+        method: HTTP_METHODS.PUT
+    },
+    successAction: ACTIONS.UPDATE_CODE_SUCCESS,
+    failureAction: ACTIONS.UPDATE_CODE_FAILURE,
+
+};
+
 export default metadata;

@@ -19,52 +19,47 @@ import {
     InputGroup,Input
 } from 'reactstrap';
 
-import UserRecordCardComponent from './UserRecordCardComponent'
+import CodeGroupCardComponent from './CodeGroupCardComponent'
 
 function mapStateToProps(state){
     return {
-        cardListTitle:"User–Record",
+        cardListTitle:"Code-Group-Record",
         cardList: [
-            {
-                userId: "SCHMIDT",
-                lastName: "Schmidt",
-                firstName:"Dieter",
-                task: "Inspector",
-                department: "QM01",
-                role: "USER",
-                password: "1234567890"
-            },
-            {
-                userId: "SCHMIDT",
-                lastName: "Schmidt",
-                firstName:"Dieter",
-                task: "Inspector",
-                department: "QM01",
-                role: "USER",
-                password: "1234567890"
-            },
-            {
-                userId: "SCHMIDT",
-                lastName: "Schmidt",
-                firstName:"Dieter",
-                task: "Inspector",
-                department: "QM01",
-                role: "USER",
-                password: "1234567890"
-            }]
+                {
+                    codeGroup: "NC-DC-A",
+                    description: "Struktureller und mechanischer Einbau",
+                    codeType: "P"
+                },
+                {
+                    codeGroup: "NC-DC-B",
+                    description: "Elektrik-Einbau",
+                    codeType: "P"
+                },
+                {
+                    codeGroup: "NC-DC-C",
+                    description: "Oberfläche und Behandlung",
+                    "codeType": "P"
+                },
+                {
+                    codeGroup: "NC-DC-D",
+                    description: "Beschädigung",
+                    codeType: "P"
+                }
+
+            ]
 
     }
 
 }
 const mapDispatchToProps = (dispatch) => ({
     actions:{
-        getAllUsers:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_USERS,ATTRS.PAYLOAD),dispatch),
-        createUsers:bindActionCreators(actionCreatorFactory(KEYS.CREATE_USER,ATTRS.PAYLOAD),dispatch),
-        deleteUser:bindActionCreators(actionCreatorFactory(KEYS.DELETE_USER,ATTRS.PAYLOAD),dispatch),
-        updateUser:bindActionCreators(actionCreatorFactory(KEYS.UPDATE_USER,ATTRS.PAYLOAD),dispatch),
+        getAllCodeGroups:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_CODE_GROUPS,ATTRS.PAYLOAD),dispatch),
+        createCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.CREATE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
+        deleteCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.DELETE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
+        updateCodeGroup:bindActionCreators(actionCreatorFactory(KEYS.UPDATE_CODE_GROUP,ATTRS.PAYLOAD),dispatch),
     }
 })
-class UserRecordListComponent extends Component{
+class CodeGroupListComponent extends Component{
 
     constructor(props){
         super(props)
@@ -74,12 +69,10 @@ class UserRecordListComponent extends Component{
         this.inputs = {};
     }
     componentDidMount(){
-        this.props.actions.getAllUsers();
+        this.props.actions.getAllCodeGroups();
     }
     toggleCollapseAddCard(e){
         e.preventDefault();
-        console.log("click"+!this.state.collapseAddCard)
-        //document.body.classhList.toggle('sidebar-hidden');
         this.setState((prevState, props) => ({
             collapseAddCard: ! prevState.collapseAddCard
         }));
@@ -88,8 +81,8 @@ class UserRecordListComponent extends Component{
         this.inputs = this.inputs || {};
         this.inputs[e.target.name] = e.target.value
     }
-    addUser(){
-        this.props.actions.createUsers(this.inputs)
+    createCodeGroup(){
+        this.props.actions.createCodeGroup(this.inputs)
         this.inputs={}
     }
     render(){
@@ -101,7 +94,7 @@ class UserRecordListComponent extends Component{
                         <strong>{this.props.cardListTitle}</strong>
                     </CardHeader>
                     <CardBody>
-                        <UserRecordCardComponent user={this.props.cardList[0]} actions={this.props.actions}/>
+                        <CodeGroupCardComponent codeGroup={this.props.cardList[0]} actions={this.props.actions}/>
                         {/*<UserRecordCardComponent {...this.props.cardList[1]}/>*/}
                         {/*<UserRecordCardComponent {...this.props.cardList[2]}/>*/}
                     </CardBody>
@@ -112,28 +105,20 @@ class UserRecordListComponent extends Component{
                                 <div className="card-actions">
                                     {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
-                                    <a  onClick={this.addUser.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
+                                    <a  onClick={this.createCodeGroup.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
                                 <InputGroup>
-                                    <Input placeholder="FirstName" name="firstName"  onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="CodeGroup" name="codeGroup"  onChange={this.handlerInput.bind(this)}/>
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="LastName" name="lastName" onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="CodeType" name="codeType" onChange={this.handlerInput.bind(this)} />
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="Task" name="task" onChange={this.handlerInput.bind(this)} />
+                                    <Input placeholder="Description" name="description" onChange={this.handlerInput.bind(this)}/>
                                 </InputGroup>
-                                <InputGroup>
-                                    <Input placeholder="Department" name="department" onChange={this.handlerInput.bind(this)}/>
-                                </InputGroup>
-                                <InputGroup>
-                                    <Input placeholder="Role" name="role" onChange={this.handlerInput.bind(this)}/>
-                                </InputGroup>
-                                <InputGroup>
-                                    <Input placeholder="Password" name="password" onChange={this.handlerInput.bind(this)}/>
-                                </InputGroup>
+
                             </CardBody>
                         </Card>
 
@@ -144,6 +129,6 @@ class UserRecordListComponent extends Component{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(UserRecordListComponent)/**
+export default connect(mapStateToProps,mapDispatchToProps)(CodeGroupListComponent)/**
  * Created by supun on 14/03/18.
  */
