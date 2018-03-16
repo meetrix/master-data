@@ -5,14 +5,11 @@ import React,{Component} from 'react';
 import PropTypes from 'prop-types'
 import classnames from 'classnames';
 import {
-    Row,
     Col,
     Card,
     CardHeader,
     CardBody,
     CardFooter,
-    ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText,
-    Badge,
     InputGroup,Input
 } from 'reactstrap';
 
@@ -29,6 +26,7 @@ class CodeListComponent extends Component{
         this.inputs = {};
     }
     componentDidMount(){
+
         this.props.actions.getAllCodes();
     }
     toggleCollapseAddCard(e){
@@ -74,7 +72,6 @@ class CodeListComponent extends Component{
                             <CardHeader>
                                 <strong>List Group</strong>
                                 <div className="card-actions">
-                                    {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
                                     <a  onClick={this.createCode.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>

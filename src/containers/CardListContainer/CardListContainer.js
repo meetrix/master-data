@@ -9,12 +9,9 @@ import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS} from '../../constants/constant'
 import CardListView from './CardListView'
 function mapStateToProps(state){
     return {
-        userCardList:userCardList,
+        userCardList:state.userCardList,
         codeCardList:state.codeCardList,
         codeGroupCardList:state.codeGroupCardList,
-
-
-
     }
 
 }

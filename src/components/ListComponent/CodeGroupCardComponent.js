@@ -27,7 +27,9 @@ class CodeGroupCardComponent extends Component{
             collapseAddCard:false,
             editCard:false,
         }
+
     }
+
     toggleCollapseAddCard(e){
         e.preventDefault();
         this.setState((prevState, props) => ({

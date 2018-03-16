@@ -66,11 +66,11 @@ function* fetchAsync(action) {
         const reply = yield call(fetchHandler,action)
         yield put({...action, type: REDUX_ACTIONS.FETCHING_SUCCESS});
         console.log(reply)
-        yield put({type: reply.successAction, payload: reply.res.data, args: {...action.payload, ...action.args}});
+        yield put({type: reply.successAction, payload: reply.res, args: {...action.payload, ...action.args}});
     } catch (reply) {
         console.log(reply)
         yield put({...action, type: REDUX_ACTIONS.FETCHING_FAILURE});
-        yield put({type: reply.failureAction, payload: reply.err.data, args: {...action.payload, ...action.args}});
+        yield put({type: reply.failureAction, payload: reply.err, args: {...action.payload, ...action.args}});
     }
 }
 export  function* takeEveryFetchSaga() {

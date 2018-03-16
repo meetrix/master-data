@@ -9,6 +9,7 @@ import CodeGroupListComponent from '../../components/ListComponent/CodeGroupList
 import CodeListComponent from '../../components/ListComponent/CodeListComponent'
 class CardListView extends Component{
 
+
     render(){
         return(
             <Col>

@@ -27,6 +27,9 @@ class CodeGroupListComponent extends Component{
     componentDidMount(){
         this.props.actions.getAllCodeGroups();
     }
+    componentWillMount(){
+
+    }
     toggleCollapseAddCard(e){
         e.preventDefault();
         this.setState((prevState, props) => ({
