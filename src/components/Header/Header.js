@@ -37,17 +37,21 @@ class Header extends Component {
     document.body.classList.toggle('aside-menu-hidden');
   }
 
+  componentDidMount(){
+      document.body.classList.toggle('sidebar-hidden');
+      document.body.classList.toggle('aside-menu-hidden');
+  }
 
   render() {
     return (
       <header className="app-header navbar">
-        <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
-        </NavbarToggler>
-        <NavbarBrand href="#"></NavbarBrand>
-        <NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
-        </NavbarToggler>
+        {/*<NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>*/}
+          {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
+        {/*</NavbarToggler>*/}
+        {/*<NavbarBrand href="#"></NavbarBrand>*/}
+        {/*<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>*/}
+          {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
+        {/*</NavbarToggler>*/}
 
           <Nav className="ml-auto" navbar>
               <NavItem className="d-md-down-none">
@@ -61,12 +65,12 @@ class Header extends Component {
               </NavItem>
               <HeaderDropdown {...this.props}/>
           </Nav>
-          <NavbarToggler className="d-lg-none" onClick={this.mobileAsideToggle}>
-              <span className="navbar-toggler-icon"></span>
-          </NavbarToggler>
-          <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
-              <span className="navbar-toggler-icon"></span>
-          </NavbarToggler>
+          {/*<NavbarToggler className="d-lg-none" onClick={this.mobileAsideToggle}>*/}
+              {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
+          {/*</NavbarToggler>*/}
+          {/*<NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>*/}
+              {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
+          {/*</NavbarToggler>*/}
       </header>
     )
   }

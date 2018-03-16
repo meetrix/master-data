@@ -16,8 +16,45 @@ export default (state = user_card_init, action) => {
                 }
             }
             break;
-        case REDUX_ACTIONS.UPDATE_USER_SUCCESS:
+        case REDUX_ACTIONS.CREATE_USER_SUCCESS:
+            return{
+                state:{
+                    users:[
+                        ...state.users.
+                        action.payload,
+                    ]
+                }
+            }
 
+            break;
+        case REDUX_ACTIONS.DELETE_USER_SUCCESS:
+            // const oldUserIndex = state.users.findIndex(user=>{
+            //     return user.userId === action.payload.userId
+            // })
+            // return{
+            //     state:{
+            //         users:[
+            //             ...state.users.slice(0, oldUserIndex),
+            //             action.payload,
+            //             ...state.users.slice(oldUserIndex)
+            //         ]
+            //     }
+            // }
+
+            break;
+        case REDUX_ACTIONS.UPDATE_USER_SUCCESS:
+            const oldUserIndex = state.users.findIndex(user=>{
+                return user.userId === action.payload.userId
+            })
+            return{
+                state:{
+                    users:[
+                        ...state.users.slice(0, oldUserIndex),
+                        action.payload,
+                        ...state.users.slice(oldUserIndex)
+                    ]
+                }
+            }
 
             break;
 
