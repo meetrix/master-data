@@ -46,7 +46,7 @@ class Full extends Component {
             {/*<Breadcrumb />*/}
             <Container fluid>
               <Switch>
-                  <Route path="/dashboard/list" name="CardListContainer" component={CardListContainer}/>
+                  <Route path="/" name="CardListContainer" component={CardListContainer}/>
 
               </Switch>
             </Container>
