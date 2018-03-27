@@ -15,9 +15,8 @@ class CardListView extends Component{
             <Col>
                 <Row>
                     <UserListComponent userCardList = {this.props.userCardList} actions={this.props.actions.userCardAction}/>
-                    <CodeListComponent codeCardList={this.props.codeCardList} actions={this.props.actions.codeCardAction}/>
                     <CodeGroupListComponent codeGroupCardList={this.props.codeGroupCardList } actions={this.props.actions.codeGroupCardAction}/>
-
+                    <CodeListComponent codeCardList={this.props.codeCardList} actions={this.props.actions.codeCardAction}/>
                 </Row>
             </Col>
         );

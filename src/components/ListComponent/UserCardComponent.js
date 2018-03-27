@@ -24,7 +24,6 @@ class UserCardComponent extends Component{
         super(props)
         this.state={
             collapseAddCard:false,
-            editCard:false,
             user:this.props.user || {},
             rePassword:'',
             error:{
@@ -48,7 +47,7 @@ class UserCardComponent extends Component{
     }
 
     editUser(){
-        this.setState({editCard:true})
+        this.props.actions.editingUser({editing:true,id:this.props.id})
     }
 
     editUserDone(){
@@ -67,7 +66,9 @@ class UserCardComponent extends Component{
             this.props.actions.updateUser(this.state.user)
         }
     }
-
+    editUserDoneClose(){
+        this.props.actions.editingUser({editing:false,id:-1})
+    }
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -102,7 +103,7 @@ class UserCardComponent extends Component{
             error =  <Alert className="fade" color="success">error : {this.state.error.message}</Alert>
         }
 
-        if (!this.state.editCard){
+        if (!(this.props.editCard.editing && this.props.editCard.id === this.props.id)){
             return (
                 <Col>
                     <Card color="primary" className="text-white ">
@@ -127,7 +128,6 @@ class UserCardComponent extends Component{
                             <Alert color="success">Task : {this.props.user.task}</Alert>
                             <Alert color="success">Department : {this.props.user.department}</Alert>
                             <Alert color="success">Role : {this.props.user.role}</Alert>
-                            <Alert color="success">Password : {this.props.user.password}</Alert>
 
                         </CardBody>
                     </Card>
@@ -142,6 +142,8 @@ class UserCardComponent extends Component{
                             Record Edit
                             <div className="card-actions">
                                 <a onClick={this.editUserDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
+                                <a onClick={this.editUserDoneClose.bind(this)} className="btn-close"><i
+                                    className="icon-close"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className="show collapse">
@@ -186,12 +188,14 @@ UserCardComponent.propTypes={
             role: PropTypes.string,
             password: PropTypes.string
         }),
-
+    editCard:PropTypes.object,
+    id:PropTypes.number,
     actions: PropTypes.shape({
         getAllUsers: PropTypes.func.isRequired,
         createUsers:PropTypes.func.isRequired,
         deleteUser:PropTypes.func.isRequired,
         updateUser:PropTypes.func.isRequired,
+        editingUser:PropTypes.func.isRequired,
     })
 
 

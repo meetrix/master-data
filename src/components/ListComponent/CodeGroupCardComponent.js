@@ -26,6 +26,10 @@ class CodeGroupCardComponent extends Component{
             codeGroup:this.props.codeGroup,
             collapseAddCard:false,
             editCard:false,
+            error:{
+                message:'',
+                show:false
+            }
         }
 
     }
@@ -42,12 +46,13 @@ class CodeGroupCardComponent extends Component{
     }
 
     editCodeGroup(){
-        this.setState({editCard:true})
+
+        this.props.actions.editingCodeGroup({editing:true,id:this.props.id})
     }
 
     editCodeGroupDone(){
 
-        this.props.actions.updateCodeGroup({codeGroup:this.props.codeGroup.codeGroup})
+        this.props.actions.updateCodeGroup(this.state.codeGroup)
 
     }
 
@@ -64,8 +69,15 @@ class CodeGroupCardComponent extends Component{
         }))
 
     }
+    editCodeGroupDoneClose(){
+        this.props.actions.editingCodeGroup({editing:false,id:-1})
+    }
     render(){
-        if (!this.state.editCard){
+        let error;
+        if(this.state.error.show){
+            error =  <Alert className="fade" color="success">error : {this.state.error.message}</Alert>
+        }
+        if (!(this.props.editCard.editing && this.props.editCard.id === this.props.id)){
             return(
                 <Col>
                     <Card color="primary" className="text-white ">
@@ -97,9 +109,12 @@ class CodeGroupCardComponent extends Component{
                             Record Edit
                             <div className="card-actions">
                                 <a onClick={this.editCodeGroupDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
+                                <a onClick={this.editCodeGroupDoneClose.bind(this)} className="btn-close"><i
+                                    className="icon-close"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className="show collapse">
+                            {error}
                             <InputGroup>
                                 <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
                             </InputGroup>
@@ -121,12 +136,14 @@ CodeGroupCardComponent.propTypes={
             codeType: PropTypes.string,
 
         }),
-
+    editCard:PropTypes.object,
+    id:PropTypes.number,
     actions: PropTypes.shape({
         getAllCodeGroups: PropTypes.func.isRequired,
         createCodeGroup:PropTypes.func.isRequired,
         deleteCodeGroup:PropTypes.func.isRequired,
         updateCodeGroup:PropTypes.func.isRequired,
+        editingCodeGroup:PropTypes.func.isRequired,
     })
 
 

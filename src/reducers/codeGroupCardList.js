@@ -12,52 +12,56 @@ export default (state = code_group_init, action) => {
 
         case REDUX_ACTIONS.GET_ALL_CODE_GROUPS_SUCCESS:
             return{
-                state:{
-                    codeGroups:action.payload
-                }
+                ...state,
+                codeGroups:action.payload.data
+
             }
-            break;
         case REDUX_ACTIONS.CREATE_CODE_GROUP_SUCCESS:
             return{
-                state:{
+                ...state,
                     codeGroups:[
-                        ...state.codeGroups.
-                            action.payload,
+                        ...state.codeGroups,
+                            action.args,
                     ]
-                }
+
             }
 
-            break;
         case REDUX_ACTIONS.DELETE_CODE_GROUP_SUCCESS:
-            // const oldUserIndex = state.users.findIndex(user=>{
-            //     return user.userId === action.payload.userId
-            // })
-            // return{
-            //     state:{
-            //         users:[
-            //             ...state.users.slice(0, oldUserIndex),
-            //             action.payload,
-            //             ...state.users.slice(oldUserIndex)
-            //         ]
-            //     }
-            // }
-
-            break;
-        case REDUX_ACTIONS.UPDATE_CODE_GROUP_SUCCESS:
-            const oldCodeGroupIndex = state.codeGroups.findIndex(codeGroup=>{
-                return codeGroup.codeGroup === action.payload.codeGroup
+            const remainCodeGroups = state.codeGroups.filter((codeGroup)=>{
+                return codeGroup.codeGroup !== action.args.codeGroup
             })
             return{
-                state:{
-                    users:[
-                        ...state.codeGroups.slice(0, oldCodeGroupIndex),
-                        action.payload,
-                        ...state.codeGroups.slice(oldCodeGroupIndex)
-                    ]
-                }
+                ...state,
+                codeGroups:remainCodeGroups
+
             }
 
-            break;
+
+        case REDUX_ACTIONS.UPDATE_CODE_GROUP_SUCCESS:
+            let updateCodeGroupsList =  state.codeGroups.map( (codeGroup, index) => {
+                if(codeGroup.codeGroup !== action.args.codeGroup) {
+                    // This isn't the item we care about - keep it as-is
+                    return codeGroup;
+                }
+
+                // Otherwise, this is the one we want - return an updated value
+                return {
+                    ...codeGroup,
+                    ...action.args
+                };
+            });
+            return{
+                ...state,
+                codeGroups:updateCodeGroupsList,
+                editCard:{id:-1,editing:false},
+
+            }
+        case REDUX_ACTIONS.EDITING_CODE_GROUP:
+            return{
+                ...state,
+                editCard:{id:action.payload.id,editing:true},
+
+            }
 
         default:
             return state;
