@@ -58,6 +58,12 @@ class CodeListComponent extends Component{
     }
     createCode(){
         this.props.actions.createCode(this.state.code)
+        this.setState({code:{
+                code:'',
+                codeType:'',
+                codeGroup:'',
+                description:''
+            }})
     }
     getCardsElement(){
         let codeCards = this.props.codeCardList.codes;

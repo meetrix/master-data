@@ -43,10 +43,6 @@ class UserListComponent extends Component{
     componentDidMount(){
         this.props.actions.getAllUsers();
     }
-    componentWillReceiveProps(){
-        console.log(this.props.userCardList)
-        this.props.userCardList.createdUser ? this.setState({user:{}}): null
-    }
     toggleCollapseAddCard(e){
         e.preventDefault();
         this.setState((prevState, props) => ({
@@ -92,6 +88,14 @@ class UserListComponent extends Component{
         }
         else {
             this.props.actions.createUsers(this.state.user)
+            this.setState({user:{userId:'',
+                    firstName:'',
+                    lastName:'',
+                    task:'',
+                    department:'',
+                    role:'',
+                    password:''},
+                rePassword:''})
         }
 
     }
