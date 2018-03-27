@@ -1,5 +1,5 @@
 
-const BACKEND_URL = 'http://nxservicetbase.de:8080';
+const BACKEND_URL = 'http://18.196.118.163:8080/nxtbase';
 export const REDUX_ACTIONS = {
     //saga action
     FETCHING:'FETCHING',
@@ -17,6 +17,8 @@ export const REDUX_ACTIONS = {
     DELETE_USER_FAILURE:'DELETE_USER_FAILURE',
     UPDATE_USER_FAILURE:'UPDATE_USER_FAILURE',
     UPDATE_USER_SUCCESS:'UPDATE_USER_SUCCESS',
+    EDITING_USER:'EDITING_USER',
+    CREATED_USER:'CREATED_USER',
 
     //code group redux action
     GET_ALL_CODE_GROUPS_SUCCESS: "GET_ALL_CODE_GROUPS_SUCCESS",
@@ -27,6 +29,8 @@ export const REDUX_ACTIONS = {
     DELETE_CODE_GROUP_FAILURE:'DELETE_CODE_GROUP_FAILURE',
     UPDATE_CODE_GROUP_FAILURE:'UPDATE_CODE_GROUP_FAILURE',
     UPDATE_CODE_GROUP_SUCCESS:'UPDATE_CODE_GROUP_SUCCESS',
+    EDITING_CODE_GROUP:'EDITING_CODE_GROUP',
+    CREATED_CODE_GROUP:'CREATED_CODE_GROUP',
 
 
     //code record redux action
@@ -38,6 +42,8 @@ export const REDUX_ACTIONS = {
     DELETE_CODE_FAILURE:'DELETE_CODE_FAILURE',
     UPDATE_CODE_FAILURE:'UPDATE_CODE_FAILURE',
     UPDATE_CODE_SUCCESS:'UPDATE_CODE_SUCCESS',
+    EDITING_CODE:'EDITING_CODE',
+    CREATED_CODE:'CREATED_CODE',
 
 
 
@@ -53,29 +59,7 @@ export const USER_PROFILE ={
     UPDATE_STREAM:'UPDATE_STREAM',
     UPDATE_SUBJECT:'UPDATE_SUBJECT'
 }
-export const STORE_INITIATE_VALUE={
-    AUTH_INITIATE:
-    {
-        user: {
-            _id:undefined,
-            firstName:'supuh',
-            lastName:'mad',
-            userName: 'supun',
-            email: 'supun.12@cse.mrt.ac.lk',
-            imageUrl:'http://localhost:8080/img/avatars/1.jpg',
-            roles:'consultee',
-            school:'st.aloysius',
-            address:'nakiyadeniya galle',
-            district:'galle',
-            stream:'a/l',
-            subject:'maths'
-        },
-        session: undefined,
-        authHeader:undefined
-    }
 
-
-}
 
 export const ACTION_KEY ={
 
@@ -84,6 +68,8 @@ export const ACTION_KEY ={
     CREATE_USER:"CREATE_USER",
     DELETE_USER:"DELETE_USER",
     UPDATE_USER:'UPDATE_USER',
+
+
 
     //Code Groups
     GET_ALL_CODE_GROUPS:'GET_ALL_CODE_GROUPS',
@@ -111,11 +97,12 @@ export const URLS = {
     DELETE_USER:BACKEND_URL+'/nxtservice/users/:userId',
     UPDATE_USER:BACKEND_URL+'/nxtservice/users/:userId',
 
+
     //code group
-    GET_ALL_CODE_GROUPS: BACKEND_URL+'/nxtservice/codegoups',
-    CREATE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegoups',
-    DELETE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegoups/:codeGroup',
-    UPDATE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegoups/:codeGroup',
+    GET_ALL_CODE_GROUPS: BACKEND_URL+'/nxtservice/codegroups',
+    CREATE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegroups',
+    DELETE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegroups/:codeGroup',
+    UPDATE_CODE_GROUP:BACKEND_URL+'/nxtservice/codegroups/:codeGroup',
 
     //code record
     GET_ALL_CODES: BACKEND_URL+'/nxtservice/codes',
@@ -137,6 +124,7 @@ export const FETCH_KEYS = {
 
 export const HTTP_CODES = {
     SUCCESS: 200,
+    CREATED:201,
     INTERNAL_ERROR: 500,
     BAD_REQUEST: 400,
     NOT_AUTHENTICATED: 401,

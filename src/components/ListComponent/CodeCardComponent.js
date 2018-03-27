@@ -26,6 +26,10 @@ class CodeCardComponen extends Component{
             code:this.props.code,
             collapseAddCard:false,
             editCard:false,
+            error:{
+                message:'',
+                show:false
+            }
         }
     }
     toggleCollapseAddCard(e){
@@ -36,16 +40,16 @@ class CodeCardComponen extends Component{
     }
     deleteCode(){
 
-        this.props.actions.deleteCode({codeGroup:this.props.code.codeGroup})
+        this.props.actions.deleteCode({code:this.props.code.code})
     }
 
     editCode(){
-        this.setState({editCard:true})
+        this.props.actions.editingCode({editing:true,id:this.props.id})
     }
 
     editCodeDone(){
 
-        this.props.actions.updateCode({codeGroup:this.props.code.codeGroup})
+        this.props.actions.updateCode(this.state.code)
 
     }
 
@@ -62,8 +66,15 @@ class CodeCardComponen extends Component{
         }))
 
     }
+    editCodeDoneClose(){
+        this.props.actions.editingCode({editing:false,id:-1})
+    }
     render(){
-        if (!this.state.editCard){
+        let error;
+        if(this.state.error.show){
+            error =  <Alert className="fade" color="success">error : {this.state.error.message}</Alert>
+        }
+        if (!(this.props.editCard.editing && this.props.editCard.id === this.props.id)){
             return(
                 <Col>
                     <Card color="primary" className="text-white ">
@@ -95,9 +106,12 @@ class CodeCardComponen extends Component{
                             Record Edit
                             <div className="card-actions">
                                 <a onClick={this.editCodeDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
+                                <a onClick={this.editCodeDoneClose.bind(this)} className="btn-close"><i
+                                    className="icon-close"></i></a>
                             </div>
                         </CardHeader>
                         <CardBody className="show collapse">
+                            {error}
                             <InputGroup>
                                 <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
@@ -122,12 +136,14 @@ CodeCardComponen.propTypes={
             codeGroup: PropTypes.string,
             description: PropTypes.string
         }),
-
+    editCard:PropTypes.object,
+    id:PropTypes.number,
     actions: PropTypes.shape({
         getAllCodes: PropTypes.func.isRequired,
         createCode:PropTypes.func.isRequired,
         deleteCode:PropTypes.func.isRequired,
         updateCode:PropTypes.func.isRequired,
+        editingCode:PropTypes.func.isRequired,
     })
 
 

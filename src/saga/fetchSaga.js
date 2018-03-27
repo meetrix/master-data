@@ -40,6 +40,9 @@ function fetchHandler({key, payload}) {
     if (optionsClone.method === HTTP_METHODS.GET) {
         optionsClone.params = {...payloadClone, ...optionsClone.params};
     }
+    else if(optionsClone.method === HTTP_METHODS.DELETE) {
+        //optionsClone.params = {...payloadClone, ...optionsClone.params};
+    }
     else {
         optionsClone.body = {...payloadClone, ...optionsClone.body};
     }

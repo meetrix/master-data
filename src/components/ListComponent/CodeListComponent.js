@@ -21,7 +21,17 @@ class CodeListComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false
+            collapseAddCard:false,
+            code:{
+                code:'',
+                codeType:'',
+                codeGroup:'',
+                description:''
+            },
+            error:{
+                message:'',
+                show:false
+            }
         }
         this.inputs = {};
     }
@@ -35,21 +45,34 @@ class CodeListComponent extends Component{
             collapseAddCard: ! prevState.collapseAddCard
         }));
     }
-    handlerInput(e){
-        this.inputs = this.inputs || {};
-        this.inputs[e.target.name] = e.target.value
+    handleInputChange(event){
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState(prevState => ({
+            code: {
+                ...prevState.code,
+                [name]: value
+            }
+        }))
     }
     createCode(){
-        this.props.actions.createCode(this.inputs)
-        this.inputs={}
+        this.props.actions.createCode(this.state.code)
+        this.setState({code:{
+                code:'',
+                codeType:'',
+                codeGroup:'',
+                description:''
+            }})
     }
     getCardsElement(){
         let codeCards = this.props.codeCardList.codes;
         return (
             codeCards.map((codeCard, index) =>
 
-                <CodeCardComponent  key={index}
+                <CodeCardComponent  key={index} id ={index}
                                     code={codeCard}
+                                    editCard={this.props.codeCardList.editCard}
                                     actions={this.props.actions}
                 />
 
@@ -57,6 +80,10 @@ class CodeListComponent extends Component{
         )
     }
     render(){
+        let error;
+        if(this.state.error.show){
+            error =  <Alert className="fade" color="success">error : {this.state.error.message}</Alert>
+        }
         return(
 
             <Col >
@@ -70,24 +97,25 @@ class CodeListComponent extends Component{
                     <CardFooter>
                         <Card>
                             <CardHeader>
-                                <strong>List Group</strong>
+                                <strong>Create Code</strong>
                                 <div className="card-actions">
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
                                     <a  onClick={this.createCode.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
+                                {error}
                                 <InputGroup>
-                                    <Input placeholder="Code" name="code"  onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="Code" name="code" value={this.state.code.code}  onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="CodeType" name="codeType" onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="CodeGroup" name="codeGroup" onChange={this.handlerInput.bind(this)} />
+                                    <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} />
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="Description" name="description" onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="Description" value={this.state.code.description} name="description" onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
 
                             </CardBody>
@@ -102,7 +130,9 @@ class CodeListComponent extends Component{
 CodeListComponent.propTypes={
     codeCardList:PropTypes.shape({
         title: PropTypes.string.isRequired,
-        codes:PropTypes.array.isRequired
+        codes:PropTypes.array.isRequired,
+        editCard:PropTypes.object,
+        createdCode:PropTypes.bool,
     }),
 
     actions: PropTypes.shape({
@@ -110,6 +140,7 @@ CodeListComponent.propTypes={
         createCode:PropTypes.func.isRequired,
         deleteCode:PropTypes.func.isRequired,
         updateCode:PropTypes.func.isRequired,
+        editingCode:PropTypes.func.isRequired,
     })
 
 

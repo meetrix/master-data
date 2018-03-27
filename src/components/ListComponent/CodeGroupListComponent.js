@@ -11,7 +11,8 @@ import {
     CardHeader,
     CardBody,
     CardFooter,
-    InputGroup,Input
+    InputGroup,Input,
+    Alert
 } from 'reactstrap';
 
 import CodeGroupCardComponent from './CodeGroupCardComponent'
@@ -20,7 +21,16 @@ class CodeGroupListComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false
+            collapseAddCard:false,
+            codeGroup:{
+                codeGroup:'',
+                codeType:'',
+                description:''
+            },
+            error:{
+                message:'',
+                show:false
+            }
         }
         this.inputs = {};
     }
@@ -36,13 +46,24 @@ class CodeGroupListComponent extends Component{
             collapseAddCard: ! prevState.collapseAddCard
         }));
     }
-    handlerInput(e){
-        this.inputs = this.inputs || {};
-        this.inputs[e.target.name] = e.target.value
+    handleInputChange(event){
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState(prevState => ({
+            codeGroup: {
+                ...prevState.codeGroup,
+                [name]: value
+            }
+        }))
     }
     createCodeGroup(){
-        this.props.actions.createCodeGroup(this.inputs)
-        this.inputs={}
+        this.props.actions.createCodeGroup(this.state.codeGroup)
+        this.setState({codeGroup:{
+                codeGroup:'',
+                codeType:'',
+                description:''
+            }})
     }
     getCardsElement(){
         let codeGroups = this.props.codeGroupCardList.codeGroups;
@@ -50,6 +71,8 @@ class CodeGroupListComponent extends Component{
             codeGroups.map((codeGroup, index) =>
 
                 <CodeGroupCardComponent  key={index}
+                                         id ={index}
+                                         editCard={this.props.codeGroupCardList.editCard}
                                          codeGroup={codeGroup}
                                     actions={this.props.actions}
                 />
@@ -58,6 +81,10 @@ class CodeGroupListComponent extends Component{
         )
     }
     render(){
+        let error;
+        if(this.state.error.show){
+            error =  <Alert className="fade" color="success">error : {this.state.error.message}</Alert>
+        }
         return(
 
             <Col >
@@ -71,21 +98,22 @@ class CodeGroupListComponent extends Component{
                     <CardFooter>
                         <Card>
                             <CardHeader>
-                                <strong>List Group</strong>
+                                <strong>Cteate CodeGroup</strong>
                                 <div className="card-actions">
                                     <a  onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })}  data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
                                     <a  onClick={this.createCodeGroup.bind(this)} className="btn-close" ><i className="fa fa-check-circle"></i></a>
                                 </div>
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
+                                {error}
                                 <InputGroup>
-                                    <Input placeholder="CodeGroup" name="codeGroup"  onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="CodeType" name="codeType" onChange={this.handlerInput.bind(this)} />
+                                    <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
                                 </InputGroup>
                                 <InputGroup>
-                                    <Input placeholder="Description" name="description" onChange={this.handlerInput.bind(this)}/>
+                                    <Input placeholder="Description" name="description"  value={this.state.codeGroup.description} onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
 
                             </CardBody>
@@ -100,7 +128,9 @@ class CodeGroupListComponent extends Component{
 CodeGroupListComponent.propTypes={
     codeGroupCardList:PropTypes.shape({
         title: PropTypes.string.isRequired,
-        codeGroups:PropTypes.array.isRequired
+        codeGroups:PropTypes.array.isRequired,
+        editCard:PropTypes.object,
+        createdCodeGroup:PropTypes.bool,
     }),
 
     actions: PropTypes.shape({
@@ -108,6 +138,7 @@ CodeGroupListComponent.propTypes={
         createCodeGroup:PropTypes.func.isRequired,
         deleteCodeGroup:PropTypes.func.isRequired,
         updateCodeGroup:PropTypes.func.isRequired,
+        editingCodeGroup:PropTypes.func.isRequired,
     })
 
 

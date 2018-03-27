@@ -13,17 +13,18 @@ export default (url, options) =>
             }
 
             // Extract query string
-            url = `${url}?${searchParams.toString()}`;
+            //url = `${url}?${searchParams.toString()}`;
         }
 
         options.credentials = "include";
 
         options.headers = new Headers({
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
 
         });
 
-
+        console.log(options.body)
 
         if (typeof options.body === "object") {
             options.body = JSON.stringify(options.body);
@@ -33,28 +34,38 @@ export default (url, options) =>
         console.log(options)
         fetch(url, options).then((res) => {
             // Wait for response data to resolve before resolving the fetch promise
-            res.json().then((data) => {
-                console.log("server response");
-                res.data = data;
+            console.log("jjjjjjjjjjjjjjjjj")
+            console.log(res)
 
-                if (res.status === HTTP_CODES.NOT_AUTHENTICATED) {
-                    window.setTimeout(() => {
-                        // Note: Redirecting automatically only if auth status is already set as 1:authenticated
-                        // if (authService.isAuthenticated()) {
-                        //     logger.error("Session is invalid. Reloading the page");
-                        //
-                        //     authService.authenticate();
-                        // }
-                    }, TIMEOUTS.AUTH_REDIRECT);
-                }
 
-                if (res.status !== HTTP_CODES.SUCCESS) {
-                    return reject(res);
-                }
-                return resolve(res);
-            }).catch((err) => {
-                err = new Error(`Error while parsing fetched data from server: ${err}`);
-                return reject(err);
-            });
+                res.text().then((data) => {
+                    console.log("server response");
+                    if(res.ok){
+
+                    }
+
+                    res.data = data ?  JSON.parse(data) : {}
+
+                    if (res.status === HTTP_CODES.NOT_AUTHENTICATED) {
+                        window.setTimeout(() => {
+                            // Note: Redirecting automatically only if auth status is already set as 1:authenticated
+                            // if (authService.isAuthenticated()) {
+                            //     logger.error("Session is invalid. Reloading the page");
+                            //
+                            //     authService.authenticate();
+                            // }
+                        }, TIMEOUTS.AUTH_REDIRECT);
+                    }
+
+                    if (!(res.status === HTTP_CODES.SUCCESS || res.status ===HTTP_CODES.CREATED)) {
+                        return reject(res);
+                    }
+                    return resolve(res);
+                }).catch((err) => {
+                    err = new Error(`Error while parsing fetched data from server: ${err}`);
+                    return reject(err);
+                });
+
         }).catch(reject);
+
     });
