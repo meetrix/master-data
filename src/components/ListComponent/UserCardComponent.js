@@ -108,7 +108,7 @@ class UserCardComponent extends Component{
                 <Col>
                     <Card color="primary" className="text-white ">
                         <CardHeader>
-                            Record
+                            UserId : {this.props.user.userId},  FirstName : {this.props.user.firstName}, LastName : {this.props.user.lastName}
                             <div className="card-actions">
 
                                 <a onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({
@@ -139,7 +139,7 @@ class UserCardComponent extends Component{
                 <Col>
                     <Card color="danger" className="text-white ">
                         <CardHeader>
-                            Record Edit
+                            Edit User : {this.props.user.userId}
                             <div className="card-actions">
                                 <a onClick={this.editUserDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
                                 <a onClick={this.editUserDoneClose.bind(this)} className="btn-close"><i

@@ -12,7 +12,7 @@ import {
     CardBody,
     CardFooter,
     InputGroup,Input,
-    Alert
+    Alert,Label
 } from 'reactstrap';
 
 import CodeGroupCardComponent from './CodeGroupCardComponent'
@@ -47,9 +47,12 @@ class CodeGroupListComponent extends Component{
         }));
     }
     handleInputChange(event){
+        console.log()
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
+        console.log(name);
+        console.log(value)
         this.setState(prevState => ({
             codeGroup: {
                 ...prevState.codeGroup,
@@ -106,11 +109,17 @@ class CodeGroupListComponent extends Component{
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
                                 {error}
+                                <Label for="codeGroup">CodeGroup</Label>
                                 <InputGroup>
-                                    <Input placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)}/>
+                                    <Input id="codeGroup" type="select" placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)}>
+                                        {this.props.codeGroupCardList.codeGroups !=null ? this.props.codeGroupCardList.codeGroups.map((codeGroup,index)=>
+                                            <option value={codeGroup.codeGroup} key={index}>{codeGroup.codeGroup} </option>
+                                        ):null}
+                                    </Input>
                                 </InputGroup>
                                 <InputGroup>
                                     <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
+                                   
                                 </InputGroup>
                                 <InputGroup>
                                     <Input placeholder="Description" name="description"  value={this.state.codeGroup.description} onChange={this.handleInputChange.bind(this)}/>

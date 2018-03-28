@@ -82,7 +82,7 @@ class CodeGroupCardComponent extends Component{
                 <Col>
                     <Card color="primary" className="text-white ">
                         <CardHeader>
-                            Record
+                            CodeGroup: {this.props.codeGroup.codeGroup}
                             <div className="card-actions">
                                 {/*<a href="#" class="btn-setting"><i class="icon-settings"></i></a>*/}
                                 <a onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({ collapsed: this.state.collapseAddCard==true,"btn-minimize":true })} data-toggle="collapse" data-target="#collapseExample" aria-expanded={!this.state.collapseAddCard}><i className="icon-arrow-up"></i></a>
@@ -106,7 +106,7 @@ class CodeGroupCardComponent extends Component{
                 <Col>
                     <Card color="danger" className="text-white ">
                         <CardHeader>
-                            Record Edit
+                            Edit CodeGroup : {this.props.codeGroup.codeGroup}
                             <div className="card-actions">
                                 <a onClick={this.editCodeGroupDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
                                 <a onClick={this.editCodeGroupDoneClose.bind(this)} className="btn-close"><i

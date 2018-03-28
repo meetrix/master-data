@@ -10,7 +10,7 @@ import {
     CardHeader,
     CardBody,
     CardFooter,
-    InputGroup,Input
+    InputGroup,Input,Label
 } from 'reactstrap';
 
 import CodeCardComponent from './CodeCardComponent'
@@ -105,15 +105,28 @@ class CodeListComponent extends Component{
                             </CardHeader>
                             <CardBody className={classnames({ "show" : this.state.collapseAddCard==false,collapse:true })}>
                                 {error}
+                                <Label for="code">Code</Label>
                                 <InputGroup>
-                                    <Input placeholder="Code" name="code" value={this.state.code.code}  onChange={this.handleInputChange.bind(this)}/>
+                                 
+                                    <Input id="code" type="select" placeholder="Code" name="code" value={this.state.code.code}  onChange={this.handleInputChange.bind(this)}>
+                                            {this.props.codeCardList.codes !=null ? this.props.codeCardList.codes.map((code,index)=>
+                                                <option value={code.code} key={index}>{code.code} </option>
+                                            ):null}
+                                    </Input>
+                                </InputGroup>
+                                <Label for="codeGroup">CodeGroup</Label>
+                                <InputGroup>
+                                 
+                                    <Input id="codeGroup" type="select" placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} >
+                                        {this.props.codeCardList.codes !=null ? this.props.codeCardList.codes.map((code,index)=>
+                                                <option value={code.codeGroup} key={index}>{code.codeGroup} </option>
+                                            ):null}
+                                    </Input>
                                 </InputGroup>
                                 <InputGroup>
                                     <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
-                                <InputGroup>
-                                    <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} />
-                                </InputGroup>
+                                
                                 <InputGroup>
                                     <Input placeholder="Description" value={this.state.code.description} name="description" onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
