@@ -45,13 +45,13 @@ class Header extends Component {
   render() {
     return (
       <header className="app-header navbar">
-        {/*<NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>*/}
-          {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
-        {/*</NavbarToggler>*/}
-        {/*<NavbarBrand href="#"></NavbarBrand>*/}
-        {/*<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>*/}
-          {/*/!*<span className="navbar-toggler-icon"></span>*!/*/}
-        {/*</NavbarToggler>*/}
+        <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
+          <span className="navbar-toggler-icon"></span>
+        </NavbarToggler>
+        <NavbarBrand href="#"></NavbarBrand>
+        <NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>
+          <span className="navbar-toggler-icon"></span>
+        </NavbarToggler>
 
           <Nav className="ml-auto" navbar>
               <NavItem className="d-md-down-none">
