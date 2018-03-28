@@ -13,7 +13,9 @@ import Footer from '../../components/Footer/';
 import { Widget } from 'react-chat-widget';
 
 
-import CardListContainer from '../../containers/CardListContainer/CardListContainer'
+import UserListContainer from '../../containers/CardListContainer/UserlistContainer';
+import CodeListContainer from '../../containers/CardListContainer/CodeListContainer';
+import CodeGroupListContainer from '../../containers/CardListContainer/CodeGroupListContainer'
 const mapStateToProps=(state)=>{
     return {
 
@@ -46,7 +48,9 @@ class Full extends Component {
             {/*<Breadcrumb />*/}
             <Container fluid>
               <Switch>
-                  <Route path="/" name="CardListContainer" component={CardListContainer}/>
+                  <Route path="/userlist" name="UserListContainer" component={UserListContainer}/>
+                  <Route path="/codelist" name="CodeListContainer" component={CodeListContainer}/>
+                  <Route path="/codegrouplist" name="CodeGroupListContainer" component={CodeGroupListContainer}/>
 
               </Switch>
             </Container>
