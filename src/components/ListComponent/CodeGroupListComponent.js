@@ -21,7 +21,7 @@ class CodeGroupListComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false,
+            collapseAddCard:true,
             codeGroup:{
                 codeGroup:'',
                 codeType:'',

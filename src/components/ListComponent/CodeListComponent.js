@@ -21,7 +21,7 @@ class CodeListComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false,
+            collapseAddCard:true,
             code:{
                 code:'',
                 codeType:'',

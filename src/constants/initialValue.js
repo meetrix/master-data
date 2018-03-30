@@ -30,3 +30,10 @@ export const user_card_init={
 
     ]
 }
+export const inspection_card_init={
+    editCard:{id:-1,editing:false},
+    createdInspection:false,
+    inspectionPlans: [
+
+    ]
+}

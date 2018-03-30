@@ -9,13 +9,19 @@ import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS,REDUX_ACTIONS as ACTION_TYPE} fr
 import InspectionPlanListView from './InspectionPlanListView'
 function mapStateToProps(state){
     return {
-
+        inspectionPlanCardList:state.inspectionPlanCardList,
     }
 
 }
 const mapDispatchToProps = (dispatch) => ({
     actions:{
-
+        inspectionPlanCardAction:{
+            getAllInspectionPlans:bindActionCreators(actionCreatorFactory(KEYS.GET_ALL_INSPECTION_PLANS,ATTRS.PAYLOAD),dispatch),
+            createInspectionPlan:bindActionCreators(actionCreatorFactory(KEYS.CREATE_INSPECTION_PLAN,ATTRS.PAYLOAD),dispatch),
+            deleteInspectionPlan:bindActionCreators(actionCreatorFactory(KEYS.DELETE_INSPECTION_PLAN,ATTRS.PAYLOAD),dispatch),
+            updateInspectionPlan:bindActionCreators(actionCreatorFactory(KEYS.UPDATE_INSPECTION_PLAN,ATTRS.PAYLOAD),dispatch),
+            editingInspectionPlan:bindActionCreators(actionCreatorUpdateStoreFactory(ACTION_TYPE.EDITING_INSPECTION_PLAN,ATTRS.PAYLOAD),dispatch),
+        }
     }
 })
 

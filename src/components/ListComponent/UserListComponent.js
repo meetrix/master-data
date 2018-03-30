@@ -22,7 +22,7 @@ class UserListComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false,
+            collapseAddCard:true,
             user:{
                 userId:'',
                 firstName:'',

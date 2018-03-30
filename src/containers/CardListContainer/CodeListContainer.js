@@ -9,9 +9,7 @@ import {ACTION_KEY as KEYS,ACTION_ATTR as ATTRS,REDUX_ACTIONS as ACTION_TYPE} fr
 import CodeListView from './CodeListView'
 function mapStateToProps(state){
     return {
-        userCardList:state.userCardList,
         codeCardList:state.codeCardList,
-        codeGroupCardList:state.codeGroupCardList,
     }
 
 }

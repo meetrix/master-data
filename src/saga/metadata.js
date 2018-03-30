@@ -119,4 +119,41 @@ metadata[KEYS.UPDATE_CODE] = {
 
 };
 
+//inspection plan record metadata
+metadata[KEYS.GET_ALL_INSPECTION_PLANS] = {
+    url: URLS.GET_ALL_INSPECTION_PLANS,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_ALL_INSPECTION_PLANS_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_INSPECTION_PLANS_FAILURE,
+
+};
+metadata[KEYS.CREATE_INSPECTION_PLAN] = {
+    url: URLS.CREATE_INSPECTION_PLAN,
+    options: {
+        method: HTTP_METHODS.POST
+    },
+    successAction: ACTIONS.CREATE_INSPECTION_PLAN_SUCCESS,
+    failureAction: ACTIONS.CREATE_INSPECTION_PLAN_FAILURE,
+
+};
+metadata[KEYS.DELETE_INSPECTION_PLAN] = {
+    url: URLS.DELETE_INSPECTION_PLAN,
+    options: {
+        method: HTTP_METHODS.DELETE
+    },
+    successAction: ACTIONS.DELETE_INSPECTION_PLAN_SUCCESS,
+    failureAction: ACTIONS.DELETE_INSPECTION_PLAN_FAILURE,
+
+};
+metadata[KEYS.UPDATE_INSPECTION_PLAN] = {
+    url: URLS.UPDATE_INSPECTION_PLAN,
+    options: {
+        method: HTTP_METHODS.PUT
+    },
+    successAction: ACTIONS.UPDATE_INSPECTION_PLAN_SUCCESS,
+    failureAction: ACTIONS.UPDATE_INSPECTION_PLAN_FAILURE,
+
+};
 export default metadata;

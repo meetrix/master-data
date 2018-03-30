@@ -12,7 +12,7 @@ class InspectionPlanListView extends Component{
         return(
             <Col>
                 <Row>
-                    <InspectionPlanListComponent/>
+                    <InspectionPlanListComponent inspectionPlanCardList={this.props.inspectionPlanCardList} actions={this.props.actions.inspectionPlanCardAction}/>
                 </Row>
             </Col>
         );
@@ -20,6 +20,9 @@ class InspectionPlanListView extends Component{
 }
 
 InspectionPlanListView.propTypes = {
-
+    inspectionPlanCardList:PropTypes.object.isRequired,
+    actions:PropTypes.shape({
+        inspectionPlanCardAction:PropTypes.object.isRequired,
+    }),
 }
 export default InspectionPlanListView
