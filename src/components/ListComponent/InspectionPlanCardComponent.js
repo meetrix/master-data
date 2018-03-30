@@ -18,14 +18,13 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 
-class UserCardComponent extends Component{
+class InspectionPlanCardComponent extends Component{
 
     constructor(props){
         super(props)
         this.state={
             collapseAddCard:true,
-            user:this.props.user || {},
-            rePassword:'',
+
             error:{
                 message:'',
                 show:false
@@ -43,7 +42,7 @@ class UserCardComponent extends Component{
 
     deleteUser(){
 
-        this.props.actions.deleteUser({userId:this.props.user.userId})
+
     }
 
     editUser(){
@@ -52,19 +51,6 @@ class UserCardComponent extends Component{
 
     editUserDone(){
 
-        if(this.state.user.password!=this.state.rePassword){
-
-            this.setState(prevState => ({
-                error: {
-                    ...prevState.error,
-                    ...{message: "password doesn't match",show:true},
-                }
-            }))
-        }
-        else {
-
-            this.props.actions.updateUser(this.state.user)
-        }
     }
     editUserDoneClose(){
         this.props.actions.editingUser({editing:false,id:-1})
@@ -74,27 +60,7 @@ class UserCardComponent extends Component{
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        if(target.name==='rePassword'){
-          this.setState({rePassword:value})
-        }
-        else {
-            this.setState(prevState => ({
-                user: {
-                    ...prevState.user,
-                    [name]: value
-                }
-            }))
-        }
 
-        if(this.state.error.show){
-            this.setState(prevState => ({
-                error: {
-                    ...prevState.error,
-                    ...{message: "",show:false},
-
-                }
-            }));
-        }
     }
 
     render() {
@@ -108,7 +74,7 @@ class UserCardComponent extends Component{
                 <Col>
                     <Card color="primary" className="text-white ">
                         <CardHeader>
-                            UserId : {this.props.user.userId},  FirstName : {this.props.user.firstName}, LastName : {this.props.user.lastName}
+                            UserId : {},
                             <div className="card-actions">
 
                                 <a onClick={this.toggleCollapseAddCard.bind(this)} className={classnames({
@@ -122,12 +88,12 @@ class UserCardComponent extends Component{
                             </div>
                         </CardHeader>
                         <CardBody className={classnames({"show": this.state.collapseAddCard == false, collapse: true})}>
-                            <Alert color="success">UserId : {this.props.user.userId}</Alert>
-                            <Alert color="success">FirstName : {this.props.user.firstName}</Alert>
-                            <Alert color="success">LastName : {this.props.user.lastName}</Alert>
-                            <Alert color="success">Task : {this.props.user.task}</Alert>
-                            <Alert color="success">Department : {this.props.user.department}</Alert>
-                            <Alert color="success">Role : {this.props.user.role}</Alert>
+                            <Alert color="success">UserId : {}</Alert>
+                            <Alert color="success">FirstName : {}</Alert>
+                            <Alert color="success">LastName : {}</Alert>
+                            <Alert color="success">Task : {}</Alert>
+                            <Alert color="success">Department : {}</Alert>
+                            <Alert color="success">Role : {}</Alert>
 
                         </CardBody>
                     </Card>
@@ -139,7 +105,7 @@ class UserCardComponent extends Component{
                 <Col>
                     <Card color="danger" className="text-white ">
                         <CardHeader>
-                            Edit User : {this.props.user.userId}
+                            Edit User : {}
                             <div className="card-actions">
                                 <a onClick={this.editUserDone.bind(this)} className="btn"><i className="fa fa-check-square-o"></i></a>
                                 <a onClick={this.editUserDoneClose.bind(this)} className="btn-close"><i
@@ -149,25 +115,25 @@ class UserCardComponent extends Component{
                         <CardBody className="show collapse">
                             {error}
                             <InputGroup>
-                                <Input placeholder="FirstName" name="firstName" value={this.state.user.firstName} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="FirstName" name="firstName"  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="LastName" name="lastName" value={this.state.user.lastName} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="LastName" name="lastName"  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="Task" name="task" value={this.state.user.task} onChange={this.handleInputChange.bind(this)} />
+                                <Input placeholder="Task" name="task"  onChange={this.handleInputChange.bind(this)} />
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="Department" value={this.state.user.department} name="department" onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="Department"  name="department" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="Role" name="role" value={this.state.user.role} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="Role" name="role"  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="Password" type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="Password" type="password" name="password"  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                             <InputGroup>
-                                <Input placeholder="ReEnterPassword" type="password" name="rePassword" value={this.state.rePassword} onChange={this.handleInputChange.bind(this)}/>
+                                <Input placeholder="ReEnterPassword" type="password" name="rePassword"  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
                         </CardBody>
                     </Card>
@@ -175,31 +141,19 @@ class UserCardComponent extends Component{
             )
         }
 
-        }
+    }
 
 }
-UserCardComponent.propTypes={
-    user:PropTypes.shape({
-            userId: PropTypes.string,
-            lastName: PropTypes.string,
-            firstName: PropTypes.string,
-            task: PropTypes.string,
-            department: PropTypes.string,
-            role: PropTypes.string,
-            password: PropTypes.string
-        }),
+InspectionPlanCardComponent.propTypes={
+
     editCard:PropTypes.object,
     id:PropTypes.number,
     actions: PropTypes.shape({
-        getAllUsers: PropTypes.func.isRequired,
-        createUsers:PropTypes.func.isRequired,
-        deleteUser:PropTypes.func.isRequired,
-        updateUser:PropTypes.func.isRequired,
-        editingUser:PropTypes.func.isRequired,
+
     })
 
 
 }
-export default UserCardComponent/**
+export default InspectionPlanCardComponent/**
  * Created by supun on 14/03/18.
  */

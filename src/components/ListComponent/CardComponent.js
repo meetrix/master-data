@@ -20,7 +20,7 @@ class CardComponent extends Component{
     constructor(props){
         super(props)
         this.state={
-            collapseAddCard:false
+            collapseAddCard:true
         }
     }
     toggleCollapseAddCard(e){

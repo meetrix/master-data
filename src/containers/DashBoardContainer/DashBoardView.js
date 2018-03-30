@@ -56,6 +56,24 @@ class DashBoardView extends Component{
                 	</Col>
 
                 </Row>
+				<Row>
+                    <Col >
+                        <CardGroup tag="a" href="/#/dashboard/inspectionplan">
+                            <Card>
+                                <CardBody>
+                                    <CardText className="text-center">CodeGroup</CardText>
+                                </CardBody>
+                            </Card>
+                            <Card>
+                                <CardBody>
+                                    <CardImg top width="100%" src="/img/avatars/1.jpg" alt="Card image cap" />
+                                </CardBody>
+                            </Card>
+                        </CardGroup>
+                    </Col>
+					<Col></Col>
+                    <Col></Col>
+				</Row>
                 
             </Col>
         );

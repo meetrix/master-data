@@ -24,7 +24,7 @@ class CodeCardComponen extends Component{
         super(props)
         this.state={
             code:this.props.code,
-            collapseAddCard:false,
+            collapseAddCard:true,
             editCard:false,
             error:{
                 message:'',

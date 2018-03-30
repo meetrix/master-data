@@ -15,8 +15,11 @@ import { Widget } from 'react-chat-widget';
 
 import UserListContainer from '../../containers/CardListContainer/UserlistContainer';
 import CodeListContainer from '../../containers/CardListContainer/CodeListContainer';
+import InspectionPlanListContainer from '../../containers/CardListContainer/InspectionPlanListContainer';
 import CodeGroupListContainer from '../../containers/CardListContainer/CodeGroupListContainer';
 import DashBoardContainer from '../../containers/DashBoardContainer/DashBoardContainer';
+
+
 const mapStateToProps=(state)=>{
     return {
 
@@ -53,6 +56,7 @@ class Full extends Component {
                   <Route path="/dashboard/user" name="UserListContainer" component={UserListContainer}/>
                   <Route path="/dashboard/code" name="CodeListContainer" component={CodeListContainer}/>
                   <Route path="/dashboard/codegroup" name="CodeGroupListContainer" component={CodeGroupListContainer}/>
+                  <Route path="/dashboard/inspectionplan" name="InspectionPlanListContainer" component={InspectionPlanListContainer}/>
                   <Route path="/dashboard" name="DashBoardContainer" component={DashBoardContainer}/>
 
               </Switch>
