@@ -14,7 +14,8 @@ import {
     Badge,
     Alert,
     InputGroup,
-    Input
+    Input,
+    CardLink
 } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -100,8 +101,7 @@ class InspectionPlanCardComponent extends Component{
                             <Alert color="success">Workstation : {this.props.inspectionPlan.workstation}</Alert>
                             <Alert color="success">Image : {this.props.inspectionPlan.image}</Alert>
                             <Alert color="success">Description : {this.props.inspectionPlan.description}</Alert>
-
-
+                            <CardLink  href={"#/dashboard/inspectionitem/"+this.props.inspectionPlan.inspectionPlan}><Badge color="danger">Inspection Feature</Badge></CardLink>
                         </CardBody>
                     </Card>
                 </Col>

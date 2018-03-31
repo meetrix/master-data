@@ -24,26 +24,13 @@ export default (url, options) =>
 
         });
 
-        console.log(options.body)
 
         if (typeof options.body === "object") {
             options.body = JSON.stringify(options.body);
         }
-        console.log("serever request")
-        console.log(url)
-        console.log(options)
         fetch(url, options).then((res) => {
             // Wait for response data to resolve before resolving the fetch promise
-            console.log("jjjjjjjjjjjjjjjjj")
-            console.log(res)
-
-
                 res.text().then((data) => {
-                    console.log("server response");
-                    if(res.ok){
-
-                    }
-
                     res.data = data ?  JSON.parse(data) : {}
 
                     if (res.status === HTTP_CODES.NOT_AUTHENTICATED) {
@@ -57,7 +44,7 @@ export default (url, options) =>
                         }, TIMEOUTS.AUTH_REDIRECT);
                     }
 
-                    if (!(res.status === HTTP_CODES.SUCCESS || res.status ===HTTP_CODES.CREATED)) {
+                    if (!(res.status === HTTP_CODES.SUCCESS || res.status ===HTTP_CODES.CREATED || res.status ===204)) {
                         return reject(res);
                     }
                     return resolve(res);

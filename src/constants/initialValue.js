@@ -37,3 +37,10 @@ export const inspection_card_init={
 
     ]
 }
+export const inspection_item_card_init={
+    editCard:{id:-1,editing:false},
+    createdInspectionItem:false,
+    inspectionItems: [
+
+    ]
+}

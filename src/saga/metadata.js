@@ -156,4 +156,42 @@ metadata[KEYS.UPDATE_INSPECTION_PLAN] = {
     failureAction: ACTIONS.UPDATE_INSPECTION_PLAN_FAILURE,
 
 };
+
+//inspection item record metadata
+metadata[KEYS.GET_ALL_INSPECTION_ITEMS] = {
+    url: URLS.GET_ALL_INSPECTION_ITEMS,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_ALL_INSPECTION_ITEMS_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_INSPECTION_ITEMS_FAILURE,
+
+};
+metadata[KEYS.CREATE_INSPECTION_ITEM] = {
+    url: URLS.CREATE_INSPECTION_ITEM,
+    options: {
+        method: HTTP_METHODS.POST
+    },
+    successAction: ACTIONS.CREATE_INSPECTION_ITEM_SUCCESS,
+    failureAction: ACTIONS.CREATE_INSPECTION_ITEM_FAILURE,
+
+};
+metadata[KEYS.DELETE_INSPECTION_ITEM] = {
+    url: URLS.DELETE_INSPECTION_ITEM,
+    options: {
+        method: HTTP_METHODS.DELETE
+    },
+    successAction: ACTIONS.DELETE_INSPECTION_ITEM_SUCCESS,
+    failureAction: ACTIONS.DELETE_INSPECTION_ITEM_FAILURE,
+
+};
+metadata[KEYS.UPDATE_INSPECTION_ITEM] = {
+    url: URLS.UPDATE_INSPECTION_ITEM,
+    options: {
+        method: HTTP_METHODS.PUT
+    },
+    successAction: ACTIONS.UPDATE_INSPECTION_ITEM_SUCCESS,
+    failureAction: ACTIONS.UPDATE_INSPECTION_ITEM_FAILURE,
+
+};
 export default metadata;

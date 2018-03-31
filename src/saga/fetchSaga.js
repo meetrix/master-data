@@ -8,15 +8,8 @@ import fetch from '../helpers/fetchWrapper';
 
 
 function fetchHandler({key, payload}) {
-
-    console.log("fetchHandler")
-    console.log("key:"+key)
-    console.log("payload:"+payload)
-    console.log(payload)
-
     let {url, options, failureAction, successAction} = metadata[key];
     // Note - metadata will not be validated here expecting that the metadata file is perfect and predictable
-
     // Cloned to avoid later assigned values being persistent across requests
     const optionsClone = {...options},
         payloadClone = {...payload},
@@ -27,7 +20,6 @@ function fetchHandler({key, payload}) {
     if (url.indexOf('/:') !== 0) {
         pathTokens.shift();
     }
-
     pathTokens.forEach((token) => {
         const paramKey = token.split('/')[0];
         url = url.replace(`/:${paramKey}`, `/${payloadClone[paramKey]}`);
@@ -35,18 +27,20 @@ function fetchHandler({key, payload}) {
         // Assume that same data will not be sent as both path param and query/body
         //delete payloadClone[paramKey];
     });
-    console.log("url")
-    console.log(url)
     if (optionsClone.method === HTTP_METHODS.GET) {
         optionsClone.params = {...payloadClone, ...optionsClone.params};
     }
     else if(optionsClone.method === HTTP_METHODS.DELETE) {
         //optionsClone.params = {...payloadClone, ...optionsClone.params};
+        optionsClone.body = {...payloadClone, ...optionsClone.body};
+    }
+    else if(optionsClone.method === HTTP_METHODS.PUT) {
+        //optionsClone.params = {...payloadClone, ...optionsClone.params};
+        optionsClone.body = {...payloadClone, ...optionsClone.body};
     }
     else {
         optionsClone.body = {...payloadClone, ...optionsClone.body};
     }
-    console.log(optionsClone)
     return new Promise((resolve, reject) => {
         fetch(url, optionsClone)
             .then((res) => resolve({
@@ -63,15 +57,11 @@ function fetchHandler({key, payload}) {
 
 
 function* fetchAsync(action) {
-    console.log("sagaFetch:"+action);
-    console.log(action)
     try {
         const reply = yield call(fetchHandler,action)
         yield put({...action, type: REDUX_ACTIONS.FETCHING_SUCCESS});
-        console.log(reply)
         yield put({type: reply.successAction, payload: reply.res, args: {...action.payload, ...action.args}});
     } catch (reply) {
-        console.log(reply)
         yield put({...action, type: REDUX_ACTIONS.FETCHING_FAILURE});
         yield put({type: reply.failureAction, payload: reply.err, args: {...action.payload, ...action.args}});
     }

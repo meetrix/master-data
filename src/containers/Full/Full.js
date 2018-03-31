@@ -17,7 +17,9 @@ import UserListContainer from '../../containers/CardListContainer/UserlistContai
 import CodeListContainer from '../../containers/CardListContainer/CodeListContainer';
 import InspectionPlanListContainer from '../../containers/CardListContainer/InspectionPlanListContainer';
 import CodeGroupListContainer from '../../containers/CardListContainer/CodeGroupListContainer';
+import InspectionItemListContainer from '../../containers/CardListContainer/InspectionItemListContainer';
 import DashBoardContainer from '../../containers/DashBoardContainer/DashBoardContainer';
+
 
 
 const mapStateToProps=(state)=>{
@@ -36,10 +38,6 @@ class Full extends Component {
     constructor(props){
         super(props)
     }
-    componentDidMount(){
-        console.log("Full")
-        console.log(this.props)
-    }
   render() {
     return (
       <div className="app">
@@ -57,6 +55,7 @@ class Full extends Component {
                   <Route path="/dashboard/code" name="CodeListContainer" component={CodeListContainer}/>
                   <Route path="/dashboard/codegroup" name="CodeGroupListContainer" component={CodeGroupListContainer}/>
                   <Route path="/dashboard/inspectionplan" name="InspectionPlanListContainer" component={InspectionPlanListContainer}/>
+                  <Route exact path="/dashboard/inspectionitem/:inspectionPlan" name="InspectionItemListContainer" component={InspectionItemListContainer}/>
                   <Route path="/dashboard" name="DashBoardContainer" component={DashBoardContainer}/>
 
               </Switch>
