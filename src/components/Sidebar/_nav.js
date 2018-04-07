@@ -19,6 +19,12 @@ export default {
 	            name: 'CodeGroup',
 	            url: '/dashboard/codegroup',
 	            icon: 'fa fa-th'
+						}
+						,
+       		 {
+	            name: 'InspectionPlan',
+	            url: '/dashboard/inspectionplan',
+	            icon: 'fa fa-th'
        		 }
 
     ]

@@ -14,7 +14,8 @@ import {
     Badge,
     Alert,
     Input,
-    InputGroup
+    InputGroup,
+    Label
 } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -112,12 +113,25 @@ class CodeCardComponen extends Component{
                         </CardHeader>
                         <CardBody className="show collapse">
                             {error}
+                            <Label for="codeType">CodeType</Label>
                             <InputGroup>
-                                <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
+                                {/* <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/> */}
+                                <Input id="codeType" type="select" placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)} >
+                                    {this.props.codes !=null ? this.props.codes.map((code,index)=>
+                                            <option value={code.codeType} key={index}>{code.codeType} </option>
+                                        ):null}
+                                </Input>
                             </InputGroup>
+                            <Label for="codeGroup">CodeGroup</Label>
                             <InputGroup>
-                                <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} />
+                                <Input id="codeGroup" type="select" placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} >
+                                    {this.props.codes !=null ? this.props.codes.map((code,index)=>
+                                            <option value={code.codeGroup} key={index}>{code.codeGroup} </option>
+                                        ):null}
+                                </Input>
+                                {/* <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)} /> */}
                             </InputGroup>
+                            <Label for="description">Description</Label>
                             <InputGroup>
                                 <Input placeholder="Description" value={this.state.code.description} name="description" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
@@ -136,6 +150,7 @@ CodeCardComponen.propTypes={
             codeGroup: PropTypes.string,
             description: PropTypes.string
         }),
+    codes:PropTypes.array.isRequired,
     editCard:PropTypes.object,
     id:PropTypes.number,
     actions: PropTypes.shape({

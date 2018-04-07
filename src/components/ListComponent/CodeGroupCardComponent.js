@@ -14,7 +14,8 @@ import {
     Badge,
     Alert,
     Input,
-    InputGroup
+    InputGroup,
+    Label
 } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -115,9 +116,11 @@ class CodeGroupCardComponent extends Component{
                         </CardHeader>
                         <CardBody className="show collapse">
                             {error}
+                            <Label for="codeType">CodeType</Label>
                             <InputGroup>
                                 <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
                             </InputGroup>
+                            <Label for="description">Description</Label>
                             <InputGroup>
                                 <Input placeholder="Description" name="description"  value={this.state.codeGroup.description} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>

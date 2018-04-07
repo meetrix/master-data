@@ -4,14 +4,33 @@
 import React,{Component} from 'react'
 import {Col,Row,CardBody,Card,CardLink,CardTitle,CardSubtitle,CardGroup,CardImg,CardText,CardDeck} from 'reactstrap'
 import PropTypes from 'prop-types'
+import Widget02 from '../../components/Widgets/Widget02';
 class DashBoardView extends Component{
 
 
     render(){
         return(
             <Col>
+				<Row>
+					<Col>
+						<Row>
+							<Col xs="12" sm="6" lg="3">
+								<Widget02  mainText="User" link="/#/dashboard/user" icon="fa fa-cogs" color="primary" />
+							</Col>
+							<Col xs="12" sm="6" lg="3">
+								<Widget02  mainText="Code" link="/#/dashboard/code" icon="fa fa-laptop" color="info"/>
+							</Col>
+							<Col xs="12" sm="6" lg="3">
+								<Widget02  mainText="CodeGroup" link="/#/dashboard/codegroup" icon="fa fa-moon-o" color="warning"/>
+							</Col>
+							<Col xs="12" sm="6" lg="3">
+								<Widget02  mainText="InspectionPlan" link="/#/dashboard/inspectionplan" icon="fa fa-bell" color="danger"/>
+							</Col>
+						</Row>
+					</Col>
+        		</Row>
                 
-                <Row>
+                {/* <Row>
                 	<Col>
 	                	<CardGroup tag="a" href="/#/dashboard/user">
 		                	<Card>
@@ -61,7 +80,7 @@ class DashBoardView extends Component{
                         <CardGroup tag="a" href="/#/dashboard/inspectionplan">
                             <Card>
                                 <CardBody>
-                                    <CardText className="text-center">CodeGroup</CardText>
+                                    <CardText className="text-center">InspectionPlan</CardText>
                                 </CardBody>
                             </Card>
                             <Card>
@@ -73,7 +92,7 @@ class DashBoardView extends Component{
                     </Col>
 					<Col></Col>
                     <Col></Col>
-				</Row>
+				</Row> */}
                 
             </Col>
         );

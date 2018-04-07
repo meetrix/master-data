@@ -15,7 +15,8 @@ import {
     Alert,
     InputGroup,
     Input,
-    CardLink
+    CardLink,
+    Label
 } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -121,21 +122,27 @@ class InspectionPlanCardComponent extends Component{
                         </CardHeader>
                         <CardBody className="show collapse">
                             {error}
+                            <Label for="jigId">JigId</Label>
                             <InputGroup>
                                 <Input placeholder="JigId" name="jigId" value={this.state.inspectionPlan.jigId}  onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="task">Task</Label>
                             <InputGroup>
                                 <Input placeholder="Task" name="task" value={this.state.inspectionPlan.task}  onChange={this.handleInputChange.bind(this)} />
                             </InputGroup>
+                            <Label for="product">Product</Label>
                             <InputGroup>
                                 <Input placeholder="Product"  name="product" value={this.state.inspectionPlan.product} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="workstation">Workstation</Label>
                             <InputGroup>
                                 <Input placeholder="Workstation" name="workstation" value={this.state.inspectionPlan.workstation} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="image">Image</Label>
                             <InputGroup>
                                 <Input placeholder="Image"  name="image" value={this.state.inspectionPlan.image} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="description">Description</Label>
                             <InputGroup>
                                 <Input placeholder="Description"  name="description" value={this.state.inspectionPlan.description} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>

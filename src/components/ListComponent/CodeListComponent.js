@@ -73,6 +73,7 @@ class CodeListComponent extends Component{
                 <CodeCardComponent  key={index} id ={index}
                                     code={codeCard}
                                     editCard={this.props.codeCardList.editCard}
+                                    codes={this.props.codeCardList.codes}
                                     actions={this.props.actions}
                 />
 
@@ -108,11 +109,12 @@ class CodeListComponent extends Component{
                                 <Label for="code">Code</Label>
                                 <InputGroup>
                                  
-                                    <Input id="code" type="select" placeholder="Code" name="code" value={this.state.code.code}  onChange={this.handleInputChange.bind(this)}>
+                                    {/* <Input id="code" type="select" placeholder="Code" name="code" value={this.state.code.code}  onChange={this.handleInputChange.bind(this)}>
                                             {this.props.codeCardList.codes !=null ? this.props.codeCardList.codes.map((code,index)=>
                                                 <option value={code.code} key={index}>{code.code} </option>
                                             ):null}
-                                    </Input>
+                                    </Input> */}
+                                    <Input placeholder="Code" value={this.state.code.code} name="code" onChange={this.handleInputChange.bind(this)}/>
                                 </InputGroup>
                                 <Label for="codeGroup">CodeGroup</Label>
                                 <InputGroup>
@@ -122,9 +124,16 @@ class CodeListComponent extends Component{
                                                 <option value={code.codeGroup} key={index}>{code.codeGroup} </option>
                                             ):null}
                                     </Input>
+                                    {/* <Input placeholder="CodeGroup" value={this.state.code.codeGroup} name="codeGroup" onChange={this.handleInputChange.bind(this)}/> */}
                                 </InputGroup>
+                                <Label for="codeType">CodeType</Label>
                                 <InputGroup>
-                                    <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/>
+                                    <Input id="codeType" type="select" placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)} >
+                                        {this.props.codeCardList.codes !=null ? this.props.codeCardList.codes.map((code,index)=>
+                                                <option value={code.codeType} key={index}>{code.codeType} </option>
+                                            ):null}
+                                    </Input>
+                                    {/* <Input placeholder="CodeType" value={this.state.code.codeType} name="codeType" onChange={this.handleInputChange.bind(this)}/> */}
                                 </InputGroup>
                                 
                                 <InputGroup>

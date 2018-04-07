@@ -14,7 +14,8 @@ import {
     Badge,
     Alert,
     InputGroup,
-    Input
+    Input,
+    Label
 } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -148,24 +149,31 @@ class UserCardComponent extends Component{
                         </CardHeader>
                         <CardBody className="show collapse">
                             {error}
+                            <Label for="firstName">FirstName</Label>
                             <InputGroup>
                                 <Input placeholder="FirstName" name="firstName" value={this.state.user.firstName} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="lastName">LastName</Label>
                             <InputGroup>
                                 <Input placeholder="LastName" name="lastName" value={this.state.user.lastName} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="task">Task</Label>
                             <InputGroup>
                                 <Input placeholder="Task" name="task" value={this.state.user.task} onChange={this.handleInputChange.bind(this)} />
                             </InputGroup>
+                            <Label for="department">Department</Label>
                             <InputGroup>
                                 <Input placeholder="Department" value={this.state.user.department} name="department" onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="role">Role</Label>
                             <InputGroup>
                                 <Input placeholder="Role" name="role" value={this.state.user.role} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="password">Password</Label>
                             <InputGroup>
                                 <Input placeholder="Password" type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>
+                            <Label for="rePassword">ReEnterPassword</Label>
                             <InputGroup>
                                 <Input placeholder="ReEnterPassword" type="password" name="rePassword" value={this.state.rePassword} onChange={this.handleInputChange.bind(this)}/>
                             </InputGroup>

@@ -111,11 +111,12 @@ class CodeGroupListComponent extends Component{
                                 {error}
                                 <Label for="codeGroup">CodeGroup</Label>
                                 <InputGroup>
-                                    <Input id="codeGroup" type="select" placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)}>
+                                    {/* <Input id="codeGroup" type="select" placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)}>
                                         {this.props.codeGroupCardList.codeGroups !=null ? this.props.codeGroupCardList.codeGroups.map((codeGroup,index)=>
                                             <option value={codeGroup.codeGroup} key={index}>{codeGroup.codeGroup} </option>
                                         ):null}
-                                    </Input>
+                                    </Input> */}
+                                    <Input placeholder="CodeGroup" name="codeGroup" value={this.state.codeGroup.codeGroup} onChange={this.handleInputChange.bind(this)} />
                                 </InputGroup>
                                 <InputGroup>
                                     <Input placeholder="CodeType" name="codeType" value={this.state.codeGroup.codeType} onChange={this.handleInputChange.bind(this)} />
