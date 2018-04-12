@@ -19,6 +19,7 @@ import InspectionPlanListContainer from '../../containers/CardListContainer/Insp
 import CodeGroupListContainer from '../../containers/CardListContainer/CodeGroupListContainer';
 import InspectionItemListContainer from '../../containers/CardListContainer/InspectionItemListContainer';
 import InspectionItemProblemCodeListContainer from '../../containers/CardListContainer/InspectionItemProblemCodeListContainer/InspectionItemProblemCodeListContainer';
+import InspectionItemReasonCodeListContainer from '../../containers/CardListContainer/InspectionItemReasonCodeListContainer/InspectionItemReasonCodeListContainer';
 import DashBoardContainer from '../../containers/DashBoardContainer/DashBoardContainer';
 
 
@@ -58,6 +59,7 @@ class Full extends Component {
                   <Route path="/dashboard/inspectionplan" name="InspectionPlanListContainer" component={InspectionPlanListContainer}/>
                   <Route exact path="/dashboard/inspectionitem/:inspectionPlan" name="InspectionItemListContainer" component={InspectionItemListContainer}/>
                   <Route exact path="/dashboard/inspectionitemcodes/p/:inspectionPlan/:inspectionSubItem" name="InspectionItemProblemCodeListContainer" component={InspectionItemProblemCodeListContainer}/>
+                  <Route exact path="/dashboard/inspectionitemcodes/r/:inspectionPlan/:inspectionSubItem" name="InspectionItemProblemCodeListContainer" component={InspectionItemReasonCodeListContainer}/>
                   <Route path="/dashboard" name="DashBoardContainer" component={DashBoardContainer}/>
 
               </Switch>

@@ -52,3 +52,11 @@ export const inspection_item_problem_code_card_init={
     ],
     problemCodes:[]
 }
+export const inspection_item_reason_code_card_init={
+    editCard:{id:-1,editing:false},
+    createdInspectionItemReasonCodes:false,
+    inspectionItemReasonCodes: [
+
+    ],
+    reasonCodes:[]
+}

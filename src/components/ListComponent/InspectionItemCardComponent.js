@@ -100,8 +100,8 @@ class InspectionItemCardComponent extends Component{
                             <Alert color="success">Description : {this.props.inspectionItem.description}</Alert>
                             <Alert color="success">Short Description : {this.props.inspectionItem.shortDescription}</Alert>
                             <Alert color="success">Long Description : {this.props.inspectionItem.longDescription}</Alert>
-                            <CardLink  href={"#/dashboard/inspectionitemcodes/"+this.props.inspectionItem.inspectionPlan+"/"+this.props.inspectionItem.inspectionSubItem}><Badge color="danger">Inspection Item Code Feature</Badge></CardLink>
-                        
+                            <CardLink  href={"#/dashboard/inspectionitemcodes/p/"+this.props.inspectionItem.inspectionPlan+"/"+this.props.inspectionItem.inspectionSubItem}><Badge color="danger">Inspection Item Problem Code Feature</Badge></CardLink>
+                            <CardLink  href={"#/dashboard/inspectionitemcodes/r/"+this.props.inspectionItem.inspectionPlan+"/"+this.props.inspectionItem.inspectionSubItem}><Badge color="danger">Inspection Item Reason Code Feature</Badge></CardLink>
                         </CardBody>
                     </Card>
                 </Col>
