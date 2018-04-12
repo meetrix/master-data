@@ -194,4 +194,56 @@ metadata[KEYS.UPDATE_INSPECTION_ITEM] = {
     failureAction: ACTIONS.UPDATE_INSPECTION_ITEM_FAILURE,
 
 };
+
+//inspection item code record metadata
+metadata[KEYS.GET_ALL_INSPECTION_ITEM_PROBLEM_CODES] = {
+    url: URLS.GET_ALL_INSPECTION_ITEM_PROBLEM_CODES,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_ALL_INSPECTION_ITEM_PROBLEM_CODES_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_INSPECTION_ITEM_PROBLEM_CODES_FAILURE,
+
+};
+metadata[KEYS.CREATE_INSPECTION_ITEM_PROBLEM_CODE] = {
+    url: URLS.CREATE_INSPECTION_ITEM_PROBLEM_CODE,
+    options: {
+        method: HTTP_METHODS.POST
+    },
+    successAction: ACTIONS.CREATE_INSPECTION_ITEM_PROBLEM_CODE_SUCCESS,
+    failureAction: ACTIONS.CREATE_INSPECTION_ITEM_PROBLEM_CODE_FAILURE,
+
+};
+metadata[KEYS.DELETE_INSPECTION_ITEM_PROBLEM_CODE] = {
+    url: URLS.DELETE_INSPECTION_ITEM_PROBLEM_CODE,
+    options: {
+        method: HTTP_METHODS.DELETE
+    },
+    successAction: ACTIONS.DELETE_INSPECTION_ITEM_PROBLEM_CODE_SUCCESS,
+    failureAction: ACTIONS.DELETE_INSPECTION_ITEM_PROBLEM_CODE_FAILURE,
+
+};
+metadata[KEYS.GET_PROBLEM_CODE] = {
+    url: URLS.GET_PROBLEM_CODE,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_PROBLEM_CODES_SUCCESS,
+    failureAction: ACTIONS.GET_ALL_CODE_GROUPS_FAILURE,
+
+};
+
+
+
+metadata[KEYS.GET_REASON_CODE] = {
+    url: URLS.GET_REASON_CODE,
+    options: {
+        method: HTTP_METHODS.GET
+    },
+    successAction: ACTIONS.GET_REASON_CODES_SUCCESS,
+    failureAction: ACTIONS.GET_REASON_CODES_FAILURE,
+
+};
+
+
 export default metadata;

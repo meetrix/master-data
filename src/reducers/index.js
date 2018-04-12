@@ -8,7 +8,7 @@ import codeCardList from './codeCardList';
 import codeGroupCardList from './codeGroupCardList';
 import inspectionPlanCardList from './inspectionPlanCardList';
 import inspectionItemCardList from './inspectionItemCardList';
-
+import inspectionItemProblemCodeCardList from './inspectionItemProblemCodeCardList';
 
 const rootReducer = combineReducers({
     spinner,
@@ -17,5 +17,6 @@ const rootReducer = combineReducers({
     codeGroupCardList,
     inspectionPlanCardList,
     inspectionItemCardList,
+    inspectionItemProblemCodeCardList,
 });
 export default rootReducer;

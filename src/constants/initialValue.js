@@ -44,3 +44,11 @@ export const inspection_item_card_init={
 
     ]
 }
+export const inspection_item_problem_code_card_init={
+    editCard:{id:-1,editing:false},
+    createdInspectionItemProblemCodes:false,
+    inspectionItemProblemCodes: [
+
+    ],
+    problemCodes:[]
+}
