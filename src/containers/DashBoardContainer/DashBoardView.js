@@ -15,16 +15,16 @@ class DashBoardView extends Component{
 					<Col>
 						<Row>
 							<Col xs="12" sm="6" lg="3">
-								<Widget02  mainText="User" link="/#/dashboard/user" icon="fa fa-cogs" color="primary" />
+								<Widget02  mainText="User" link="/#/dashboard/user" icon="fa fa-user-o" color="primary" />
 							</Col>
 							<Col xs="12" sm="6" lg="3">
-								<Widget02  mainText="Code" link="/#/dashboard/code" icon="fa fa-laptop" color="info"/>
+								<Widget02  mainText="Code" link="/#/dashboard/code" icon="fa fa-cube" color="info"/>
 							</Col>
 							<Col xs="12" sm="6" lg="3">
-								<Widget02  mainText="CodeGroup" link="/#/dashboard/codegroup" icon="fa fa-moon-o" color="warning"/>
+								<Widget02  mainText="CodeGroup" link="/#/dashboard/codegroup" icon="fa fa-cubes" color="warning"/>
 							</Col>
 							<Col xs="12" sm="6" lg="3">
-								<Widget02  mainText="InspectionPlan" link="/#/dashboard/inspectionplan" icon="fa fa-bell" color="danger"/>
+								<Widget02  mainText="InspectionPlan" link="/#/dashboard/inspectionplan" icon="fa fa-vcard" color="danger"/>
 							</Col>
 						</Row>
 					</Col>
